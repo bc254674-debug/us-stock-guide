@@ -35,7 +35,7 @@ function buildStocks() {
     var prev = history[history.length - 2].price;
     var chg = +(latest - prev).toFixed(2);
     return {
-      symbol: s.symbol, name: s.name, sector: s.sector,
+      symbol: s.symbol, name: s.name, sector: s.sector, vol: s.vol,
       price: latest, change: chg, changePercent: +((chg / prev) * 100).toFixed(2),
       high: +(latest * (1 + Math.random() * 0.03)).toFixed(2),
       low: +(latest * (1 - Math.random() * 0.03)).toFixed(2),
@@ -67,10 +67,11 @@ function refreshPrices() {
 }
 
 // ---- 格式化 ----
-function fmtPrice(n) { return '$' + n.toFixed(2); }
-function fmtPercent(n) { return (n > 0 ? '+' : '') + n.toFixed(2) + '%'; }
-function fmtMoney(n) { return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-function clsUpDn(n) { return n >= 0 ? 'price-up' : 'price-down'; }
+function safeNum(n) { return isNaN(n) || !isFinite(n) ? 0 : n; }
+function fmtPrice(n) { return '$' + safeNum(n).toFixed(2); }
+function fmtPercent(n) { n = safeNum(n); return (n > 0 ? '+' : '') + n.toFixed(2) + '%'; }
+function fmtMoney(n) { return '$' + safeNum(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+function clsUpDn(n) { return safeNum(n) >= 0 ? 'price-up' : 'price-down'; }
 
 // ---- Toast ----
 function showToast(msg, type) {
