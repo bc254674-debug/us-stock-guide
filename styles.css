@@ -239,6 +239,45 @@ img{max-width:100%}
 }
 .fact-dot.active{background:var(--accent);width:24px;border-radius:4px}
 
+/* 实时新闻卡片 */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:0 auto}
+.news-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:22px;display:flex;flex-direction:column;gap:12px;
+  transition:all var(--transition);text-decoration:none;color:inherit;
+  position:relative;overflow:hidden
+}
+.news-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.news-card-source{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.72rem;font-weight:600;color:var(--accent-hover);
+  text-transform:uppercase;letter-spacing:0.5px
+}
+.news-card-source::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.news-card-title{
+  font-size:0.95rem;font-weight:600;color:var(--text);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+}
+.news-card-desc{
+  font-size:0.82rem;color:var(--text-secondary);line-height:1.6;flex:1;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+}
+.news-card-time{font-size:0.72rem;color:var(--text-muted);margin-top:auto}
+.news-card-link{
+  display:inline-block;margin-top:auto;font-size:0.8rem;color:var(--accent-hover);
+  font-weight:600;transition:color var(--transition)
+}
+.news-card:hover .news-card-link{color:var(--accent)}
+.news-spinner{
+  width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);
+  border-radius:50%;margin:0 auto;animation:spin 0.8s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.news-error{text-align:center;padding:24px;color:var(--text-muted)}
+
+@media (max-width:900px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.news-grid{grid-template-columns:1fr;max-width:420px}}
+
 /* ================================================================
    首页章节通用
    ================================================================ */

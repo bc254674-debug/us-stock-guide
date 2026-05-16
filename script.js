@@ -303,44 +303,103 @@ window.addEventListener('scroll', function() {
   }
 })();
 
-/* ---- 你知道吗旋转卡片 ---- */
+/* ---- 实时美股新闻 (rss2json + Google News RSS) ---- */
 (function() {
-  var cards = document.querySelectorAll('.fact-card');
-  var dots = document.querySelectorAll('.fact-dot');
-  if (cards.length === 0) return;
-  var currentFact = 0;
-  var totalFacts = cards.length;
-  var autoTimer = null;
+  var NEWS_KEY = 'us_stock_news_cache';
+  var NEWS_DATE_KEY = 'us_stock_news_date';
+  var RSS_URL = 'https://news.google.com/rss/search?q=US+stock+market+finance&hl=en-US&gl=US&ceid=US:en';
+  var API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(RSS_URL);
 
-  function showFact(index) {
-    if (index === currentFact) return;
-    cards[currentFact].classList.remove('active');
-    cards[currentFact].classList.add('exit');
-    dots[currentFact].classList.remove('active');
-    setTimeout(function() {
-      cards[currentFact].classList.remove('exit');
-    }, 600);
-    currentFact = index;
-    cards[currentFact].classList.add('active');
-    dots[currentFact].classList.add('active');
-    resetTimer();
+  var grid = document.getElementById('newsGrid');
+  var loading = document.getElementById('newsLoading');
+  var fallback = document.getElementById('newsFallback');
+  var timeEl = document.getElementById('newsUpdateTime');
+  if (!grid) return;
+
+  function showFallback() {
+    if (loading) loading.style.display = 'none';
+    if (grid) grid.style.display = 'none';
+    if (fallback) fallback.style.display = 'block';
+    // Start fact rotator
+    var cards = document.querySelectorAll('.fact-card');
+    var dots = document.querySelectorAll('.fact-dot');
+    if (cards.length === 0) return;
+    var currentFact = 0;
+    function showFact(i) {
+      cards[currentFact].classList.remove('active');
+      dots[currentFact].classList.remove('active');
+      currentFact = i;
+      cards[currentFact].classList.add('active');
+      dots[currentFact].classList.add('active');
+    }
+    setInterval(function() { showFact((currentFact + 1) % cards.length); }, 5000);
+    dots.forEach(function(d) { d.addEventListener('click', function() { showFact(parseInt(d.getAttribute('data-dot'))); }); });
   }
 
-  function nextFact() {
-    var next = (currentFact + 1) % totalFacts;
-    showFact(next);
+  function parseSource(item) {
+    var desc = item.description || '';
+    var match = desc.match(/<\/a>\s*(.+)/);
+    if (match) return match[1].trim();
+    // Try to extract from title
+    var titleMatch = item.title.match(/[-–|]\s*(.+)$/);
+    if (titleMatch) return titleMatch[1].trim();
+    return item.author || 'Financial News';
   }
 
-  function resetTimer() {
-    if (autoTimer) clearInterval(autoTimer);
-    autoTimer = setInterval(nextFact, 5000);
+  function cleanDescription(desc) {
+    if (!desc) return '';
+    return desc.replace(/<a[^>]*>.*?<\/a>/g, '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
   }
 
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
-      showFact(parseInt(this.getAttribute('data-dot')));
-    });
-  });
+  function renderNews(items) {
+    if (!items || items.length === 0) { showFallback(); return; }
+    if (loading) loading.style.display = 'none';
+    grid.style.display = 'grid';
+    grid.innerHTML = items.slice(0, 9).map(function(item) {
+      var source = parseSource(item);
+      var desc = cleanDescription(item.description);
+      var pubDate = item.pubDate ? new Date(item.pubDate) : new Date();
+      var timeAgo = getTimeAgo(pubDate);
+      return '<a href="' + item.link + '" target="_blank" rel="noopener" class="news-card">' +
+        '<span class="news-card-source">' + source + '</span>' +
+        '<span class="news-card-title">' + item.title + '</span>' +
+        (desc ? '<span class="news-card-desc">' + desc + '</span>' : '') +
+        '<span class="news-card-time">' + timeAgo + '</span>' +
+      '</a>';
+    }).join('');
+    if (timeEl) {
+      var now = new Date();
+      timeEl.textContent = '上次更新: ' + now.toLocaleString('zh-CN') + ' ｜ 新闻来源: Google News / rss2json';
+    }
+  }
 
-  resetTimer();
+  function getTimeAgo(date) {
+    var diff = Math.floor((new Date() - date) / 1000);
+    if (diff < 60) return '刚刚';
+    if (diff < 3600) return Math.floor(diff / 60) + ' 分钟前';
+    if (diff < 86400) return Math.floor(diff / 3600) + ' 小时前';
+    if (diff < 172800) return '昨天';
+    return Math.floor(diff / 86400) + ' 天前';
+  }
+
+  // Check cache
+  var today = new Date().toISOString().split('T')[0];
+  var cachedDate = localStorage.getItem(NEWS_DATE_KEY);
+  var cachedData = localStorage.getItem(NEWS_KEY);
+
+  if (cachedDate === today && cachedData) {
+    try { renderNews(JSON.parse(cachedData)); return; } catch(e) {}
+  }
+
+  // Fetch live news
+  fetch(API_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.status === 'ok' && data.items && data.items.length > 0) {
+        localStorage.setItem(NEWS_KEY, JSON.stringify(data.items));
+        localStorage.setItem(NEWS_DATE_KEY, today);
+        renderNews(data.items);
+      } else { showFallback(); }
+    })
+    .catch(function() { showFallback(); });
 })();
