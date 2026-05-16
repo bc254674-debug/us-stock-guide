@@ -1293,3 +1293,173 @@ img{max-width:100%}
   background:transparent;color:var(--text-secondary);border:1px solid var(--border)
 }
 .cookie-btn-settings:hover{color:var(--text);border-color:var(--border-light);background:var(--bg-card-hover)}
+
+/* ================================================================
+   投资小学堂 — 模拟交易 (dark theme)
+   ================================================================ */
+.invest-page{background:var(--bg);min-height:100vh}
+
+/* 顶部资产栏 */
+.invest-topbar{
+  background:var(--bg-surface);border-bottom:1px solid var(--border);
+  padding:20px 24px;margin-top:60px
+}
+.invest-topbar-inner{
+  max-width:1120px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:16px;text-align:center
+}
+.invest-balance-item{display:flex;flex-direction:column;gap:4px}
+.inv-label{font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.inv-value{font-size:1.5rem;font-weight:700;color:var(--text)}
+.inv-value.highlight{color:var(--accent-hover)}
+.inv-value.price-up{color:var(--green)}
+.inv-value.price-down{color:var(--red)}
+
+/* 主布局 */
+.invest-main{
+  max-width:1120px;margin:0 auto;padding:24px;
+  display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start
+}
+
+/* 通用区块 */
+.invest-section{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:20px;overflow:hidden
+}
+.invest-section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px;border-bottom:1px solid var(--border)
+}
+.invest-section-header h3{font-size:1rem;font-weight:600;color:var(--text)}
+.invest-section-title{font-size:1rem;font-weight:600;color:var(--text);padding:18px 20px;border-bottom:1px solid var(--border)}
+.invest-search{
+  padding:8px 14px;border:1px solid var(--border);border-radius:20px;
+  background:var(--bg-surface);color:var(--text);font-size:0.85rem;
+  width:200px;transition:border-color var(--transition)
+}
+.invest-search:focus{outline:none;border-color:var(--accent)}
+.invest-search::placeholder{color:var(--text-muted)}
+
+/* 表格 */
+.invest-table-wrap{overflow-x:auto}
+.invest-table{width:100%;border-collapse:collapse;font-size:0.88rem}
+.invest-table thead th{
+  padding:12px 16px;text-align:left;background:var(--bg-surface);
+  color:var(--text-muted);font-weight:600;font-size:0.78rem;
+  text-transform:uppercase;letter-spacing:0.3px;border-bottom:1px solid var(--border);
+  white-space:nowrap
+}
+.invest-table tbody td{
+  padding:11px 16px;border-bottom:1px solid var(--border);
+  color:var(--text-secondary);white-space:nowrap
+}
+.invest-table tbody tr:last-child td{border-bottom:none}
+.invest-table tbody tr:hover{background:var(--bg-card-hover)}
+
+.stock-row-click{cursor:pointer;transition:background var(--transition)}
+.price-up{color:var(--green);font-weight:600}
+.price-down{color:var(--red);font-weight:600}
+.sector-tag{
+  display:inline-block;font-size:0.7rem;background:var(--bg-surface);
+  color:var(--text-muted);padding:2px 8px;border-radius:10px;margin-left:6px;
+  border:1px solid var(--border)
+}
+.empty-cell{text-align:center;padding:32px 16px;color:var(--text-muted);font-size:0.88rem}
+
+.btn-trade-sm{
+  padding:5px 14px;border:1px solid var(--accent);background:transparent;
+  color:var(--accent-hover);border-radius:14px;font-size:0.8rem;font-weight:600;
+  cursor:pointer;transition:all var(--transition)
+}
+.btn-trade-sm:hover{background:var(--accent);color:#fff}
+.invest-btn-close{
+  width:28px;height:28px;border:none;background:var(--bg-surface);
+  border-radius:50%;font-size:0.85rem;cursor:pointer;color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;transition:all var(--transition);
+  border:1px solid var(--border)
+}
+.invest-btn-close:hover{color:var(--text);border-color:var(--border-light)}
+
+/* 交易面板 */
+.trade-tabs{display:flex;gap:0;border-bottom:1px solid var(--border)}
+.trade-tab{
+  flex:1;padding:12px;border:none;background:transparent;
+  color:var(--text-muted);font-size:0.9rem;font-weight:600;
+  cursor:pointer;transition:all var(--transition);
+  border-bottom:2px solid transparent
+}
+.trade-tab:hover{color:var(--text)}
+.trade-tab.active{color:var(--accent-hover);border-bottom-color:var(--accent)}
+.trade-form{padding:20px;display:flex;flex-direction:column;gap:16px}
+.form-row{display:flex;flex-direction:column;gap:5px}
+.form-row label{font-size:0.8rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.3px}
+.form-stock-display{
+  padding:10px 14px;background:var(--bg-surface);border-radius:var(--radius-xs);
+  font-size:0.92rem;font-weight:600;color:var(--text);border:1px solid var(--border)
+}
+.form-price-display{
+  padding:10px 14px;background:var(--bg-surface);border-radius:var(--radius-xs);
+  font-size:1rem;font-weight:600;color:var(--text);border:1px solid var(--border)
+}
+.form-price-display.highlight{background:var(--accent-dim);color:var(--accent-hover);font-size:1.15rem}
+.invest-input{
+  padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-xs);
+  background:var(--bg-surface);color:var(--text);font-size:0.92rem;transition:border-color var(--transition)
+}
+.invest-input:focus{outline:none;border-color:var(--accent)}
+.form-hint{font-size:0.75rem;color:var(--text-muted)}
+
+.invest-btn-primary{
+  padding:12px;border:none;border-radius:var(--radius-xs);font-size:0.95rem;
+  font-weight:600;cursor:pointer;background:var(--accent);color:#fff;
+  transition:all var(--transition);box-shadow:0 2px 12px rgba(59,130,246,0.3)
+}
+.invest-btn-primary:hover{background:var(--accent-hover);box-shadow:0 4px 20px rgba(59,130,246,0.4)}
+.invest-btn-primary.btn-sell{background:var(--red);box-shadow:0 2px 12px rgba(239,68,68,0.3)}
+.invest-btn-primary.btn-sell:hover{background:#dc2626}
+
+/* 交易记录 */
+.trade-history-list{max-height:400px;overflow-y:auto}
+.history-item{
+  padding:14px 20px;border-bottom:1px solid var(--border);
+  font-size:0.85rem;color:var(--text-secondary);line-height:1.6
+}
+.history-item:last-child{border-bottom:none}
+.history-date{font-size:0.75rem;color:var(--text-muted);margin-top:4px}
+.trade-tag{display:inline-block;padding:2px 10px;border-radius:8px;font-size:0.72rem;font-weight:600;margin-right:6px}
+.trade-tag.tag-buy{background:rgba(239,68,68,0.12);color:var(--red)}
+.trade-tag.tag-sell{background:rgba(16,185,129,0.12);color:var(--green)}
+
+.invest-btn-reset{
+  padding:10px 24px;border:1px solid var(--border);background:var(--bg-card);
+  color:var(--text-muted);font-size:0.85rem;border-radius:20px;
+  cursor:pointer;transition:all var(--transition)
+}
+.invest-btn-reset:hover{border-color:var(--red);color:var(--red)}
+
+/* Toast */
+.invest-toast{
+  position:fixed;top:80px;left:50%;transform:translateX(-50%);
+  padding:12px 26px;border-radius:10px;font-size:0.9rem;font-weight:600;
+  z-index:4000;box-shadow:0 4px 16px rgba(0,0,0,0.4);animation:toastIn 0.3s ease;
+  transition:opacity 0.3s ease,transform 0.3s ease
+}
+.invest-toast.out{opacity:0;transform:translateX(-50%) translateY(-10px)}
+.invest-toast-success{background:var(--green);color:#fff}
+.invest-toast-error{background:var(--red);color:#fff}
+.invest-toast-info{background:var(--accent);color:#fff}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* 响应式 */
+@media (max-width:900px){
+  .invest-main{grid-template-columns:1fr}
+  .invest-topbar-inner{grid-template-columns:repeat(2,1fr);gap:12px}
+  .inv-value{font-size:1.2rem}
+}
+@media (max-width:600px){
+  .invest-topbar-inner{grid-template-columns:1fr 1fr}
+  .invest-main{padding:16px}
+  .invest-section-header{flex-direction:column;gap:10px;align-items:stretch}
+  .invest-search{width:100%}
+  .invest-table thead th,.invest-table tbody td{padding:8px 10px;font-size:0.78rem}
+}
