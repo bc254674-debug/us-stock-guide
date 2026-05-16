@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股开户流程指南 — 手把手教你开美股账户</title>
+  <meta name="description" content="美股开户详细流程：券商选择对比、开户所需材料、线上开户步骤、入金方式、交易规则和税费。从入门到实战，一篇就够了。">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Microsoft Advertising (pubCenter) --><script async src="https://adsdk.microsoft.com/pubcenter/XXXXXXXX.js" crossorigin="anonymous"></script>
+  <style>
+    .broker-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; margin-bottom:14px; transition:border-color var(--transition); }
+    .broker-card:hover { border-color:var(--border-light); }
+    .broker-card h4 { font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:6px; }
+    .broker-card .broker-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+    .broker-card p { font-size:0.9rem; color:var(--text-secondary); line-height:1.7; }
+    .step-box { display:flex; gap:16px; align-items:flex-start; margin-bottom:18px; background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:18px 20px; }
+    .step-num { width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--purple)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.95rem; flex-shrink:0; }
+    .step-body { flex:1; }
+    .step-body h4 { font-size:0.95rem; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .step-body p { font-size:0.85rem; color:var(--text-secondary); line-height:1.65; margin:0; }
+    .broker-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin:14px 0; }
+    .broker-table th { background:var(--bg-surface); padding:10px 14px; text-align:left; font-weight:600; color:var(--text-muted); border-bottom:1px solid var(--border); font-size:0.75rem; text-transform:uppercase; }
+    .broker-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-secondary); }
+    .broker-table tr:hover td { background:var(--bg-card-hover); }
+    .broker-rec { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.72rem; font-weight:600; }
+    .broker-rec.green { background:rgba(16,185,129,0.12); color:var(--green); }
+    .broker-rec.blue { background:rgba(59,130,246,0.12); color:var(--accent-hover); }
+    .broker-rec.yellow { background:rgba(245,158,11,0.12); color:var(--yellow); }
+  </style>
+</head>
+<body class="teaching-page">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="teaching.html" class="nav-logo">US Stock Guide</a>
+      <ul class="nav-links">
+        <li><a href="teaching.html">← 返回教学页面</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    </div>
+  </nav>
+
+  <header class="teaching-hero">
+    <h1>🏦 美股开户流程指南</h1>
+    <p class="hero-subtitle">手把手教你开好美股账户 · 从零到第一笔交易</p>
+  </header>
+
+  <div class="teaching-body">
+
+    <!-- SVG: 开户全流程概览 -->
+    <div class="visual-chart">
+      <svg viewBox="0 0 720 130" xmlns="http://www.w3.org/2000/svg" style="max-width:720px;">
+        <defs>
+          <marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="var(--text-muted)"/></marker>
+        </defs>
+        <!-- 步骤1 -->
+        <rect x="20" y="30" width="100" height="60" rx="10" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="70" y="55" text-anchor="middle" fill="var(--accent-hover)" font-size="13" font-weight="700">① 选券商</text>
+        <text x="70" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="9">比较费用和功能</text>
+        <!-- 箭头 -->
+        <line x1="125" y1="60" x2="155" y2="60" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- 步骤2 -->
+        <rect x="160" y="30" width="100" height="60" rx="10" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="210" y="55" text-anchor="middle" fill="var(--accent-hover)" font-size="13" font-weight="700">② 注册</text>
+        <text x="210" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="9">填写个人信息</text>
+        <line x1="265" y1="60" x2="295" y2="60" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- 步骤3 -->
+        <rect x="300" y="30" width="100" height="60" rx="10" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="350" y="55" text-anchor="middle" fill="var(--accent-hover)" font-size="13" font-weight="700">③ 验证</text>
+        <text x="350" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="9">身份验证+面签</text>
+        <line x1="405" y1="60" x2="435" y2="60" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- 步骤4 -->
+        <rect x="440" y="30" width="100" height="60" rx="10" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="490" y="55" text-anchor="middle" fill="var(--accent-hover)" font-size="13" font-weight="700">④ 入金</text>
+        <text x="490" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="9">跨境汇款到账户</text>
+        <line x1="545" y1="60" x2="575" y2="60" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- 步骤5 -->
+        <rect x="580" y="25" width="120" height="70" rx="10" fill="var(--bg-card)" stroke="var(--green)" stroke-width="2"/>
+        <text x="640" y="52" text-anchor="middle" fill="var(--green)" font-size="13" font-weight="700">⑤ 开始交易</text>
+        <text x="640" y="75" text-anchor="middle" fill="var(--text-muted)" font-size="9">买入第一只股票/ETF</text>
+      </svg>
+      <div class="visual-chart-caption">开户五步走：选券商 → 注册 → 验证 → 入金 → 交易</div>
+    </div>
+
+    <section class="teaching-section">
+      <h3>🌍 为什么要投资美股？</h3>
+      <div class="teaching-card">
+        <p>相比 A 股，美股对散户有几个显著优势：</p>
+        <ul class="teaching-list">
+          <li><strong>全球最优质的公司</strong>：苹果、微软、英伟达、谷歌、亚马逊、Meta、伯克希尔——全世界最有竞争力的企业都在美国上市</li>
+          <li><strong>T+0 交易</strong>：当天买入的股票可以当天卖出（A 股是 T+1），灵活性更高</li>
+          <li><strong>没有涨跌停限制</strong>：价格完全由市场决定（但同时也意味着单日可以涨 50% 或跌 50%）</li>
+          <li><strong>长期趋势向上</strong>：标普500 近 40 年年化回报约 10%，经历多次危机后每次都创了新高</li>
+          <li><strong>ETF 选择丰富</strong>：费用率极低的指数 ETF 让散户能以很低的成本参与市场</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>⚡ 主流美股券商对比</h3>
+      <div class="table-wrapper">
+        <table class="broker-table">
+          <thead>
+            <tr><th>券商</th><th>中文支持</th><th>交易佣金</th><th>最低入金</th><th>适合人群</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span style="color:var(--accent-hover);font-weight:700;">老虎证券</span></td><td>✅ 全中文</td><td>免佣金</td><td>$0</td><td><span class="broker-rec green">中文用户首选</span></td></tr>
+            <tr><td><span style="color:var(--green);font-weight:700;">富途 moomoo</span></td><td>✅ 全中文</td><td>免佣金</td><td>$0</td><td><span class="broker-rec green">投资社区友好</span></td></tr>
+            <tr><td><span style="color:var(--purple);font-weight:700;">盈透 IBKR</span></td><td>✅ 中文</td><td>约 $0.35/笔</td><td>$0</td><td><span class="broker-rec blue">专业投资者</span></td></tr>
+            <tr><td><span style="color:var(--text);font-weight:700;">嘉信 Charles Schwab</span></td><td>❌ 英文为主</td><td>免佣金</td><td>$0</td><td><span class="broker-rec yellow">美股长持</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="teaching-tip">
+        💡 <strong>新手推荐</strong>：老虎证券或富途 moomoo。全中文界面、免佣金、操作简单，开户快（最快当天完成）。
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>📄 开户需要准备什么？</h3>
+      <div class="teaching-card">
+        <p>大部分券商线上开户需要以下材料：</p>
+        <ul class="teaching-list">
+          <li><strong>身份证</strong>（或护照）—— 正反面清晰照片</li>
+          <li><strong>本人银行卡</strong> —— 用于入金的银行账户</li>
+          <li><strong>手机号</strong> —— 用于接收验证码</li>
+          <li><strong>邮箱地址</strong> —— 接收账户通知和交易确认</li>
+          <li><strong>地址证明</strong>（有些需要）—— 近 3 个月的水电费账单或银行账单</li>
+        </ul>
+        <p style="margin-top:12px;">整个过程线上完成，无需去任何实体网点。一般 10-30 分钟就可以填完所有资料。</p>
+      </div>
+    </section>
+
+    <!-- SVG: 入金流程图 -->
+    <div class="visual-chart">
+      <svg viewBox="0 0 660 160" xmlns="http://www.w3.org/2000/svg" style="max-width:660px;">
+        <rect x="30" y="20" width="130" height="50" rx="8" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="95" y="48" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="600">🏦 你的银行</text>
+        <line x1="165" y1="45" x2="205" y2="45" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <rect x="210" y="15" width="150" height="60" rx="8" fill="var(--bg-card)" stroke="var(--yellow)" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="285" y="40" text-anchor="middle" fill="var(--yellow)" font-size="11" font-weight="600">🌐 跨境汇款</text>
+        <text x="285" y="58" text-anchor="middle" fill="var(--text-muted)" font-size="9">1-3 个工作日</text>
+        <line x1="365" y1="45" x2="405" y2="45" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <rect x="410" y="15" width="130" height="60" rx="8" fill="var(--bg-card)" stroke="var(--green)" stroke-width="2"/>
+        <text x="475" y="42" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700">📈 券商账户</text>
+        <text x="475" y="60" text-anchor="middle" fill="var(--text-muted)" font-size="9">到账后可交易</text>
+        <defs><marker id="arr2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="var(--text-muted)"/></marker></defs>
+      </svg>
+      <div class="visual-chart-caption">入金路径：本地银行 → 跨境汇款 → 券商账户（一般 1-3 个工作日到账）</div>
+    </div>
+
+    <section class="teaching-section">
+      <h3>💰 入金方式详解</h3>
+      <div class="teaching-card">
+        <p>国内用户入金美股有三种常见方式：</p>
+        <ul class="teaching-list">
+          <li><strong>跨境电汇（Wire Transfer）</strong>：最传统、最可靠的方式。通过国内银行（招商、工行、中行等）向券商账户汇款。单笔手续费约 100-300 元人民币，到账时间 1-3 个工作日。注意：<strong>每人每年有 5 万美元的外汇额度限制</strong>。</li>
+          <li><strong>境外银行卡</strong>：如果你有香港银行卡（如汇丰、中银香港等），可以通过 FPS 或 CHATS 汇款到券商，速度快（当天到账）、费用低。</li>
+          <li><strong>银证转账</strong>：一些券商（如富途）支持与部分香港银行的直接转账，类似 A 股的银证转账。</li>
+        </ul>
+        <div class="teaching-tip" style="margin-top:14px;">
+          ⚠️ <strong>重要提醒</strong>：跨境汇款时，汇款用途不要写"投资"或"证券"——建议填写"旅游消费"或"教育支出"以避免外汇管制审查。这是行业普遍做法。
+        </div>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>📜 必须了解的美股交易规则</h3>
+      <div class="teaching-card">
+        <ul class="teaching-list">
+          <li><strong>T+0 交易</strong>：当日买入的股票可以当日卖出。不过要注意美国证券交易委员会的"Pattern Day Trader"规则——如果你的账户余额低于 25,000 美元，5 个工作日内不能进行 4 次以上的日内交易。</li>
+          <li><strong>无涨跌停限制</strong>：股票可以一天涨 100%，也可以一天跌 80%。这既是机会也是风险。</li>
+          <li><strong>盘前和盘后交易</strong>：美股有 Pre-market（4:00-9:30 ET）和 After-hours（16:00-20:00 ET）交易时段，流动性较低、价差较大。</li>
+          <li><strong>税务规则</strong>：非美国居民（NRA）美股投资的资本利得 <strong>免税</strong>，但股息收入需要缴纳 10% 预扣税（根据中美税务协定，正常税率是 30%，协定的优惠税率是 10%）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>⚠️ 新手常见风险提示</h3>
+      <div class="teaching-card">
+        <ul class="teaching-list">
+          <li><strong>汇率风险</strong>：人民币对美元的汇率波动会影响你的实际收益。如果每年 5 万美元额度用满，可以关注汇率在合适时机分批换汇。</li>
+          <li><strong>信息差风险</strong>：美股财报通常在美东时间盘后发布，中文资讯有延时。建议关注英文财报和主流财经媒体。</li>
+          <li><strong>时差问题</strong>：美股交易时间北京时间 21:30-次日 04:00（夏令时），冬令时则推迟一小时。如果是上班族，可以设置条件单或使用盘前/盘后交易。</li>
+          <li><strong>杠杆风险</strong>：不要轻易使用融资融券（Margin）。用杠杆放大收益的同时，会把亏损也放大。新手绝对不要加杠杆。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>💡 第一次交易建议</h3>
+      <div class="teaching-card">
+        <p>当你的账户到账之后，不要急着去买热门股票。建议第一次交易用来熟悉整个流程：先买 1 股便宜的 ETF（比如 $20 左右的 VWO 或 $50 左右的 SCHD），体验一下下单、成交、持仓查看、卖出这个完整流程。第一次交易别想着赚钱，目标是<strong>学会操作</strong>。等你把券商的 App 界面和交易流程跑熟了，再用更多资金进行正式投资。很多人亏钱都是因为还没搞懂界面就贸然大额买入，结果手忙脚乱。</p>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>✅ 新手开户避坑清单</h3>
+      <div class="teaching-card">
+        <ol class="teaching-list">
+          <li><strong>不要同时开太多账户</strong>：选一个就够，开太多管理不过来也容易忘记交易密码</li>
+          <li><strong>入金前确认账户已激活</strong>：有时候身份验证还需要补充材料，看到"账户可以入金"的提示再汇款</li>
+          <li><strong>初次汇款先小额试试</strong>：先汇 $100-$500 确认能正常到账，再汇大额资金</li>
+          <li><strong>不要相信"稳赚"的群或荐股</strong>：正规券商不会主动联系你推荐股票</li>
+          <li><strong>不要用别人的账户帮你操作</strong>：保护自己的账户安全，不要共享密码</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 底部导航 ===== -->
+    <div class="teaching-footer">
+      <div style="margin-bottom:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <a href="etf-intro.html" class="btn-back-teaching">📊 美股ETF入门</a>
+        <a href="glossary.html" class="btn-back-teaching">📖 美股常见术语</a>
+      </div>
+      <a href="teaching.html" class="btn-primary">← 返回教学首页</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>本网站仅供教育目的，不构成任何投资建议。数据仅供参考。</p>
+      <p>投资有风险，入市需谨慎。Past performance does not guarantee future results.</p>
+      <p class="footer-copy">&copy; 2026 US Stock Guide for Beginners ｜ <a href="privacy.html" style="color:var(--text-muted)">隐私政策</a> ｜ <a href="terms.html" style="color:var(--text-muted)">服务条款</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){var t=document.getElementById('navToggle'),n=document.querySelector('.nav-links');if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open')});n.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){n.classList.remove('open')})})}})();
+  (function(){var cards=document.querySelectorAll('.teaching-hero h1,.teaching-hero .hero-subtitle,.teaching-section,.teaching-card,.teaching-tip,.visual-chart,.broker-card,.step-box,.pros-cons,.teaching-footer,.btn-primary,.btn-back-teaching');if(cards.length>0&&'IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});cards.forEach(function(c,i){c.classList.add('anim-in');c.style.transitionDelay=(i%3)*0.08+'s';obs.observe(c)})}})();
+  </script>
+  <script src="cookie-banner.js"></script>
+</body>
+</html>

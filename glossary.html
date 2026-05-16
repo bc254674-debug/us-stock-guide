@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股常见术语大全 — 股票投资必备词汇</title>
+  <meta name="description" content="美股投资常见术语完整词典：做多做空、K线、均线、支撑位阻力位、ETF费用率、定投复利、牛市熊市。分类整理，中英对照，一看就懂。">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Microsoft Advertising (pubCenter) --><script async src="https://adsdk.microsoft.com/pubcenter/XXXXXXXX.js" crossorigin="anonymous"></script>
+  <style>
+    .glossary-term { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px 20px; margin-bottom:10px; transition:border-color var(--transition); }
+    .glossary-term:hover { border-color:var(--border-light); }
+    .glossary-term .gt-en { font-size:0.82rem; color:var(--accent-hover); font-weight:600; font-family:"SF Mono","Fira Code","Consolas",monospace; }
+    .glossary-term .gt-cn { font-size:0.95rem; font-weight:600; color:var(--text); margin:2px 0 6px; }
+    .glossary-term .gt-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
+    .glossary-term .gt-example { font-size:0.8rem; color:var(--text-muted); font-style:italic; margin-top:4px; padding:6px 10px; background:var(--bg-surface); border-radius:var(--radius-xs); }
+    .category-label { display:inline-block; padding:4px 16px; border-radius:16px; font-size:0.8rem; font-weight:600; margin-bottom:10px; }
+    .category-label.trade { background:rgba(59,130,246,0.12); color:var(--accent-hover); }
+    .category-label.tech { background:rgba(16,185,129,0.12); color:var(--green); }
+    .category-label.etf { background:rgba(139,92,246,0.12); color:var(--purple); }
+    .category-label.strategy { background:rgba(245,158,11,0.12); color:var(--yellow); }
+    .category-label.market { background:rgba(239,68,68,0.12); color:var(--red); }
+  </style>
+</head>
+<body class="teaching-page">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="teaching.html" class="nav-logo">US Stock Guide</a>
+      <ul class="nav-links">
+        <li><a href="teaching.html">← 返回教学页面</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    </div>
+  </nav>
+
+  <header class="teaching-hero">
+    <h1>📖 美股常见术语大全</h1>
+    <p class="hero-subtitle">分类整理 · 中英对照 · 投资必备词汇</p>
+  </header>
+
+  <div class="teaching-body">
+
+    <div class="teaching-card" style="margin-bottom:32px;">
+      <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.8;">
+        刚开始接触美股时，满屏的英文术语可能让人望而却步。但实际上常见术语不过几十个，花 15 分钟看完这篇就能解决 90% 的阅读障碍。建议<strong>先通读一遍</strong>，然后在实际看行情和资讯时回来查阅。
+      </p>
+    </div>
+
+    <!-- SVG: 术语分类脑图 -->
+    <div class="visual-chart">
+      <svg viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;">
+        <!-- 中心 -->
+        <circle cx="310" cy="100" r="36" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="310" y="95" text-anchor="middle" fill="var(--accent-hover)" font-size="14" font-weight="700">美股术语</text>
+        <text x="310" y="112" text-anchor="middle" fill="var(--text-muted)" font-size="9">5大类别</text>
+        <!-- 分支1 -->
+        <line x1="277" y1="72" x2="210" y2="32" stroke="var(--border-light)" stroke-width="1.2"/>
+        <rect x="120" y="12" width="90" height="36" rx="18" fill="rgba(59,130,246,0.12)" stroke="var(--accent)" stroke-width="1.2"/>
+        <text x="165" y="34" text-anchor="middle" fill="var(--accent-hover)" font-size="11" font-weight="600">📈 基础交易</text>
+        <!-- 分支2 -->
+        <line x1="277" y1="72" x2="200" y2="80" stroke="var(--border-light)" stroke-width="1.2"/>
+        <rect x="108" y="62" width="96" height="36" rx="18" fill="rgba(16,185,129,0.12)" stroke="var(--green)" stroke-width="1.2"/>
+        <text x="156" y="84" text-anchor="middle" fill="var(--green)" font-size="11" font-weight="600">📊 技术分析</text>
+        <!-- 分支3 -->
+        <line x1="277" y1="128" x2="210" y2="168" stroke="var(--border-light)" stroke-width="1.2"/>
+        <rect x="120" y="150" width="90" height="36" rx="18" fill="rgba(139,92,246,0.12)" stroke="var(--purple)" stroke-width="1.2"/>
+        <text x="165" y="172" text-anchor="middle" fill="var(--purple)" font-size="11" font-weight="600">🏷️ ETF术语</text>
+        <!-- 分支4 -->
+        <line x1="343" y1="72" x2="410" y2="32" stroke="var(--border-light)" stroke-width="1.2"/>
+        <rect x="410" y="12" width="100" height="36" rx="18" fill="rgba(245,158,11,0.12)" stroke="var(--yellow)" stroke-width="1.2"/>
+        <text x="460" y="34" text-anchor="middle" fill="var(--yellow)" font-size="11" font-weight="600">🎯 投资策略</text>
+        <!-- 分支5 -->
+        <line x1="343" y1="128" x2="410" y2="168" stroke="var(--border-light)" stroke-width="1.2"/>
+        <rect x="410" y="150" width="100" height="36" rx="18" fill="rgba(239,68,68,0.12)" stroke="var(--red)" stroke-width="1.2"/>
+        <text x="460" y="172" text-anchor="middle" fill="var(--red)" font-size="11" font-weight="600">🌐 市场相关</text>
+      </svg>
+      <div class="visual-chart-caption">五大类别涵盖绝大部分美股常用术语</div>
+    </div>
+
+    <!-- === 一、基础交易术语 === -->
+    <section class="teaching-section">
+      <h3><span class="category-label trade">📈 基础交易术语</span></h3>
+
+      <div class="glossary-term">
+        <div class="gt-en">Long / Short（做多 / 做空）</div>
+        <div class="gt-cn">做多：买入股票，预期价格上涨后卖出获利。做空：借入股票卖出，预期价格下跌后买回归还，赚取差价。</div>
+        <div class="gt-desc">做多是大多数人的第一选择——低买高卖。做空相对复杂且有无限亏损风险，新手不要碰。做空操作需要券商开通融资账户。</div>
+        <div class="gt-example">例句："我看好苹果，所以做多了 AAPL。" / "他觉得特斯拉要跌，做空了 TSLA。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">T+0 / T+2（交易结算周期）</div>
+        <div class="gt-cn">T+0 指今天买的股票今天就能卖（美股对大部分股票支持 T+0）。T+2 指交易完成后 2 个工作日资金才真正到账。</div>
+        <div class="gt-desc">美股的 T+0 给了交易者很大的灵活性。但要注意 PDT 规则（账户低于 $25,000 时 5 天内限 3 次日内交易）。</div>
+        <div class="gt-example">例句："美股是 T+0 交易，但我今天已经做了三次日内交易了，不能再做了。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Open / High / Low / Close（开盘价 / 最高价 / 最低价 / 收盘价）</div>
+        <div class="gt-cn">OHLC 是每一根 K 线的四个价格数据，分别代表该时间段的起点、最高、最低和终点价。</div>
+        <div class="gt-desc">日 K 线的 OHLC 是最基础的数据。收盘价尤其重要，因为很多技术指标是以收盘价为基础计算的。开盘价通常反映盘前消息的影响。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Volume / Turnover（成交量 / 成交额）</div>
+        <div class="gt-cn">成交量是股票被买卖的总股数，成交额是总金额。量价配合是分析市场走势的重要线索。</div>
+        <div class="gt-desc">成交量暴增通常意味着重大消息或趋势转折。价格上涨伴随成交量放大是牛信号；价格上涨但成交量萎缩则可能不可持续。</div>
+        <div class="gt-example">例句："今天英伟达成交量是昨天的两倍，突破新高有量能支撑。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Turnover Rate（换手率）</div>
+        <div class="gt-cn">股票在一定时间内被转手买卖的频率，等于成交量除以流通股数。换手率高说明交易活跃。</div>
+        <div class="gt-desc">大盘股（如苹果）换手率通常低于 1%，小盘股或热门股可以达到 10% 以上。换手率过高也可能是投机过热的信号。</div>
+      </div>
+    </section>
+
+    <!-- === 二、技术分析术语 === -->
+    <section class="teaching-section">
+      <h3><span class="category-label tech">📊 技术分析术语</span></h3>
+
+      <div class="glossary-term">
+        <div class="gt-en">K线 / Candlestick（蜡烛图）</div>
+        <div class="gt-cn">源自日本的股票分析方法。每一根 K 线由实体（开盘价到收盘价）和影线（最高价和最低价）组成。阳线（红色）表示收盘价高于开盘价，阴线（绿色/蓝色）反之。</div>
+        <div class="gt-desc">K 线是股票技术分析的基石。单根 K 线的形态（十字星、锤子线、吞没等）可以给出短期反转信号。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Moving Average / MA（移动平均线）</div>
+        <div class="gt-cn">一段时间内收盘价的平均值连成的曲线。MA5 是 5 日平均线，MA10 是 10 日平均线，MA50 是 50 日线，MA200 是 200 日线。</div>
+        <div class="gt-desc">均线是最常用的趋势判断工具。股价在 MA50 上方通常被认为是中期上涨趋势。MA200 被称为"牛熊分界线"——跌破 200 日线往往意味着转入熊市。</div>
+        <div class="gt-example">例句："QQQ 今天跌破 MA50，短期趋势转弱了。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Support / Resistance（支撑位 / 阻力位）</div>
+        <div class="gt-cn">支撑位是股价下跌后容易反弹的价格区域，阻力位是股价上涨后容易受阻下跌的价格区域。</div>
+        <div class="gt-desc">支撑和阻力是技术分析中最核心的概念之一。一旦突破阻力位，阻力可能变成新的支撑位（反之亦然）。这些位置通常也是交易量较大的区域。</div>
+        <div class="gt-example">例句："标普500在 5500 点遇到了强阻力，已经三次冲不过去了。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Breakout / Pullback / Bounce（突破 / 回调 / 反弹）</div>
+        <div class="gt-cn">突破指股价有效越过阻力位；回调指上涨趋势中股价短暂下跌；反弹指下跌趋势中股价短暂上涨。</div>
+        <div class="gt-desc">突破 + 回踩确认是经典的入场信号。反弹在下跌趋势中可能只是暂时的，不要急于抄底。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Golden Cross / Death Cross（金叉 / 死叉）</div>
+        <div class="gt-cn">金叉：短期均线上穿长期均线（如 MA50 上穿 MA200），牛市信号。死叉：短期均线下穿长期均线，熊市信号。</div>
+        <div class="gt-desc">金叉和死叉是长期趋势逆转的重要信号，但不应该作为唯一的决策依据。金叉后往往有不错的上涨行情，死叉后也可能持续下跌数周。</div>
+      </div>
+    </section>
+
+    <!-- === 三、指数与ETF术语 === -->
+    <section class="teaching-section">
+      <h3><span class="category-label etf">🏷️ 指数与ETF术语</span></h3>
+
+      <div class="glossary-term">
+        <div class="gt-en">Index / Constituent（指数 / 成分股）</div>
+        <div class="gt-cn">指数是反映一篮子股票整体表现的数字。成分股是指数包含的个股。标普500 包含 500 家成分股，纳斯达克包含 2500+ 家。</div>
+        <div class="gt-desc">三大指数：道琼斯（30只工业巨头）、标普500（500只大型公司）、纳斯达克（2500+只，偏科技）。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">ETF / NAV（交易所交易基金 / 净值）</div>
+        <div class="gt-cn">ETF 是在交易所上市交易的一篮子资产。NAV（Net Asset Value）是 ETF 资产的实际价值，可以理解成"内在价值"。</div>
+        <div class="gt-desc">ETF 的市场价格围绕 NAV 上下波动。大 ETF（如 SPY）的市场价和 NAV 几乎没有差别，而小 ETF 可能有一定的折价或溢价。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Expense Ratio（费用率）</div>
+        <div class="gt-cn">基金管理公司每年从基金资产中扣除的费用比例。VOO 的费用率是 0.03%，意味着持有 $10,000 一年只扣 $3。</div>
+        <div class="gt-desc">费用率是选 ETF 最重要的指标之一。看似微小的差异在几十年复利下会变得非常巨大。主动基金通常收费 0.5%-1.5%，而指数 ETF 只有 0.03%-0.15%。</div>
+        <div class="gt-example">例句："费用率从 0.03% 到 0.10%，30 年后差的可不是小数目。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Dividend / Dividend Yield（分红 / 股息率）</div>
+        <div class="gt-cn">分红是公司利润分配给股东的部分。股息率 = 每股年分红 ÷ 股价，比如一股分红 $4、股价 $100，股息率就是 4%。</div>
+        <div class="gt-desc">美股很多优质公司连续几十年稳定分红（称为 Dividend Aristocrats，分红贵族）。对于非美国居民，股息预扣税为 10%（税后到手 90%）。成长型公司如苹果的分红较少，价值型公司如可口可乐分红较多。</div>
+      </div>
+    </section>
+
+    <!-- === 四、投资策略术语 === -->
+    <section class="teaching-section">
+      <h3><span class="category-label strategy">🎯 投资策略术语</span></h3>
+
+      <div class="glossary-term">
+        <div class="gt-en">Dollar-Cost Averaging / DCA（定投）</div>
+        <div class="gt-cn">在固定的时间投入固定的金额。市场涨的时候买得少、跌的时候买得多，长期来看平均成本低于市场均价。</div>
+        <div class="gt-desc">定投是最被广泛验证的散户投资策略之一，核心在于坚持。不需要判断市场高低，不需要研究技术指标。按月定投标普500 或纳斯达克 ETF 是最经典的策略。</div>
+        <div class="gt-example">例句："我每个月 1 号定投 $1000 到 VOO，已经坚持了 5 年。"</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Asset Allocation（资产配置）</div>
+        <div class="gt-cn">把资金分配到不同类型的资产中（股票、债券、现金、商品等），以平衡风险和收益。</div>
+        <div class="gt-desc">资产配置决定了一个投资组合 90% 以上的长期回报。最经典的配置是 60% 股票 ETF + 40% 债券 ETF，随着年龄增长逐步增加债券比例。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Diversification（分散投资）</div>
+        <div class="gt-cn">不要把所有鸡蛋放在一个篮子里。通过投资不同行业、不同地区、不同资产类别来降低风险。</div>
+        <div class="gt-desc">持有 1-2 只大盘 ETF 就可以实现很好的分散。过度分散（同时持有 20+ 只 ETF）反而会降低收益、增加管理难度。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Value Investing / Growth Investing（价值投资 / 成长投资）</div>
+        <div class="gt-cn">价值投资：买入被低估的公司，等待市场发现其价值。成长投资：买入高速增长的公司，即使估值较高。</div>
+        <div class="gt-desc">巴菲特是价值投资的代表人物，喜欢买便宜的好公司。而像木头姐（Cathie Wood）则偏好成长投资。大多数散户更适合指数投资而非选股。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Stop-Loss / Take-Profit（止损 / 止盈）</div>
+        <div class="gt-cn">止损：设置一个价格，如果跌到这个价位就自动卖出，控制最大亏损。止盈：设置一个目标价，到了就卖出锁定利润。</div>
+        <div class="gt-desc">新手容易犯的错误是没有止损——亏损的时候一直扛着，涨了一点就匆忙卖出。一个好的纪律是"截断亏损，让利润奔跑"。</div>
+      </div>
+    </section>
+
+    <!-- === 五、市场相关 === -->
+    <section class="teaching-section">
+      <h3><span class="category-label market">🌐 市场相关</span></h3>
+
+      <div class="glossary-term">
+        <div class="gt-en">Bull Market / Bear Market（牛市 / 熊市）</div>
+        <div class="gt-cn">牛市指市场持续上涨，通常从低点上涨 20% 以上确认；熊市指市场持续下跌，通常从高点下跌 20% 以上确认。</div>
+        <div class="gt-desc">美股历史上牛市长、熊市短。平均牛市持续 3-5 年，熊市 6-12 个月。在熊市中保持定投、不恐慌卖出是赚大钱的关键。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Pre-market / After-hours（盘前 / 盘后交易）</div>
+        <div class="gt-cn">盘前交易：4:00-9:30（美东时间）。盘后交易：16:00-20:00（美东时间）。这些时段流动性低、价差大。</div>
+        <div class="gt-desc">财报通常在盘后发布，所以财报后股价经常在盘后大幅波动。盘前/盘后交易的风险较高，新手建议只在正常交易时段操作。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">IPO（首次公开募股）</div>
+        <div class="gt-cn">公司第一次向公众发行股票。IPO 之后公司的股票就可以在交易所公开买卖了。</div>
+        <div class="gt-desc">热门 IPO（如 ARM、Reddit）上市首日经常大涨，但普通散户很难拿到 IPO 价格。新手不建议追高刚上市的新股——很多 IPO 上市后反而会下跌。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Earnings Season（财报季）</div>
+        <div class="gt-cn">每季度结束后，上市公司集中发布财务报告的季节。通常在 1月、4月、7月、10月。财报数据会大幅影响股价。</div>
+        <div class="gt-desc">财报季是美股最活跃的时期。营收和利润超出预期股价大涨，不及预期则大跌。提前关注财报日历可以帮助避开不必要的风险。</div>
+      </div>
+
+      <div class="glossary-term">
+        <div class="gt-en">Federal Reserve / Interest Rate（美联储 / 利率）</div>
+        <div class="gt-cn">美联储是美国的中央银行，通过调整联邦基金利率来控制通胀和刺激经济。利率是影响股票市场最重要的宏观因素之一。</div>
+        <div class="gt-desc">利率上升通常导致股市下跌（资金从股市流向债券），利率下降则利好股市（资金从债券回流股市）。美联储的每次议息会议都备受关注。</div>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>📝 写在最后</h3>
+      <div class="teaching-card">
+        <p>看完这些术语，你已经具备了阅读绝大多数美股资讯的基础能力。建议在实战中把这些术语用起来——第一次看到不懂的单词随时回来查阅。</p>
+        <p>一个高效的学习方式：每天花 5 分钟看一两条美股新闻，遇到不熟的术语就查，<strong>一个月后</strong>你会发现理解速度大幅提升。投资是一场长跑，知识积累也是。</p>
+      </div>
+    </section>
+
+    <!-- ===== 底部导航 ===== -->
+    <div class="teaching-footer">
+      <div style="margin-bottom:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <a href="etf-intro.html" class="btn-back-teaching">📊 美股ETF入门</a>
+        <a href="account-guide.html" class="btn-back-teaching">🏦 美股开户指南</a>
+      </div>
+      <a href="teaching.html" class="btn-primary">← 返回教学首页</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>本网站仅供教育目的，不构成任何投资建议。数据仅供参考。</p>
+      <p>投资有风险，入市需谨慎。Past performance does not guarantee future results.</p>
+      <p class="footer-copy">&copy; 2026 US Stock Guide for Beginners ｜ <a href="privacy.html" style="color:var(--text-muted)">隐私政策</a> ｜ <a href="terms.html" style="color:var(--text-muted)">服务条款</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){var t=document.getElementById('navToggle'),n=document.querySelector('.nav-links');if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open')});n.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){n.classList.remove('open')})})}})();
+  (function(){var cards=document.querySelectorAll('.teaching-hero h1,.teaching-hero .hero-subtitle,.teaching-section,.teaching-card,.teaching-tip,.visual-chart,.glossary-term,.category-label,.teaching-footer,.btn-primary,.btn-back-teaching');if(cards.length>0&&'IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});cards.forEach(function(c,i){c.classList.add('anim-in');c.style.transitionDelay=(i%3)*0.08+'s';obs.observe(c)})}})();
+  </script>
+  <script src="cookie-banner.js"></script>
+</body>
+</html>

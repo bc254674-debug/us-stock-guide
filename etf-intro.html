@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股ETF入门指南 — 从零开始选对ETF</title>
+  <meta name="description" content="美股ETF完全入门指南：什么是ETF、ETF vs 股票对比、经典ETF推荐（VOO/SPY/QQQ/VT）、定投策略、实操步骤。新手也能轻松理解。">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Microsoft Advertising (pubCenter) --><script async src="https://adsdk.microsoft.com/pubcenter/XXXXXXXX.js" crossorigin="anonymous"></script>
+  <style>
+    .etf-compare-svg { margin:20px 0; text-align:center; }
+    .etf-table { width:100%; border-collapse:collapse; font-size:0.88rem; margin:14px 0; }
+    .etf-table th { background:var(--bg-surface); padding:10px 14px; text-align:left; font-weight:600; color:var(--text-muted); border-bottom:1px solid var(--border); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.3px; }
+    .etf-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-secondary); }
+    .etf-table tr:hover td { background:var(--bg-card-hover); }
+    .etf-tag { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.7rem; font-weight:600; }
+    .etf-tag.green { background:rgba(16,185,129,0.12); color:var(--green); }
+    .etf-tag.blue { background:rgba(59,130,246,0.12); color:var(--accent-hover); }
+    .etf-tag.purple { background:rgba(139,92,246,0.12); color:var(--purple); }
+    .etf-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; display:flex; gap:16px; align-items:flex-start; margin-bottom:12px; transition:border-color var(--transition); }
+    .etf-card:hover { border-color:var(--border-light); }
+    .etf-card .etf-symbol { font-size:1.3rem; font-weight:800; color:var(--accent-hover); min-width:60px; }
+    .etf-card .etf-desc { flex:1; }
+    .etf-card .etf-desc h4 { font-size:0.95rem; font-weight:600; color:var(--text); margin-bottom:4px; }
+    .etf-card .etf-desc p { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
+  </style>
+</head>
+<body class="teaching-page">
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="teaching.html" class="nav-logo">US Stock Guide</a>
+      <ul class="nav-links">
+        <li><a href="teaching.html">← 返回教学页面</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    </div>
+  </nav>
+
+  <header class="teaching-hero">
+    <h1>📊 美股ETF入门指南</h1>
+    <p class="hero-subtitle">从零开始认识ETF · 选对工具 · 长期赚钱</p>
+  </header>
+
+  <div class="teaching-body">
+
+    <!-- SVG: ETF 概念示意图 -->
+    <div class="visual-chart">
+      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;">
+        <defs>
+          <linearGradient id="etfGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05"/>
+          </linearGradient>
+        </defs>
+        <!-- 篮子（ETF） -->
+        <rect x="40" y="60" width="180" height="150" rx="14" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="130" y="90" text-anchor="middle" fill="var(--accent-hover)" font-size="16" font-weight="700">ETF 基金篮子</text>
+        <!-- 内部图标 -->
+        <rect x="60" y="105" width="36" height="36" rx="4" fill="rgba(59,130,246,0.2)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="78" y="128" text-anchor="middle" fill="var(--accent-hover)" font-size="10" font-weight="600">AAPL</text>
+        <rect x="108" y="105" width="36" height="36" rx="4" fill="rgba(16,185,129,0.15)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="126" y="128" text-anchor="middle" fill="var(--green)" font-size="10" font-weight="600">MSFT</text>
+        <rect x="156" y="105" width="36" height="36" rx="4" fill="rgba(139,92,246,0.15)" stroke="var(--purple)" stroke-width="1.5"/>
+        <text x="174" y="128" text-anchor="middle" fill="var(--purple)" font-size="10" font-weight="600">GOOG</text>
+        <rect x="60" y="150" width="50" height="28" rx="4" fill="rgba(245,158,11,0.12)" stroke="var(--yellow)" stroke-width="1"/>
+        <text x="85" y="169" text-anchor="middle" fill="var(--yellow)" font-size="9" font-weight="600">AMZN</text>
+        <rect x="130" y="150" width="66" height="28" rx="4" fill="rgba(59,130,246,0.12)" stroke="var(--accent)" stroke-width="1"/>
+        <text x="163" y="169" text-anchor="middle" fill="var(--accent-hover)" font-size="9" font-weight="600">NVDA</text>
+        <!-- 箭头 -->
+        <line x1="230" y1="140" x2="280" y2="140" stroke="var(--text-muted)" stroke-width="2" marker-end="url(#arrow)"/>
+        <defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)"/></marker></defs>
+        <!-- 投资者 -->
+        <circle cx="340" cy="140" r="45" fill="var(--bg-card)" stroke="var(--border-light)" stroke-width="1.5"/>
+        <text x="340" y="125" text-anchor="middle" fill="var(--text)" font-size="28">🧑‍💼</text>
+        <text x="340" y="155" text-anchor="middle" fill="var(--text-muted)" font-size="11">投资人</text>
+        <!-- 箭头2 -->
+        <line x1="390" y1="140" x2="440" y2="140" stroke="var(--text-muted)" stroke-width="2" marker-end="url(#arrow)"/>
+        <!-- 购买结果 -->
+        <rect x="450" y="70" width="200" height="140" rx="14" fill="var(--bg-card)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="550" y="100" text-anchor="middle" fill="var(--green)" font-size="14" font-weight="700">购买一份 ETF</text>
+        <text x="550" y="125" text-anchor="middle" fill="var(--text-secondary)" font-size="11">= 同时拥有所有成分股</text>
+        <text x="550" y="150" text-anchor="middle" fill="var(--text-secondary)" font-size="11">✅ 分散风险</text>
+        <text x="550" y="172" text-anchor="middle" fill="var(--text-secondary)" font-size="11">✅ 低管理费</text>
+        <text x="550" y="194" text-anchor="middle" fill="var(--text-secondary)" font-size="11">✅ 像股票一样交易</text>
+      </svg>
+      <div class="visual-chart-caption">图：ETF 就像一篮子股票 — 买一份 ETF 等于同时持有几十到几百家公司</div>
+    </div>
+
+    <section class="teaching-section">
+      <h3>🧐 什么是ETF？</h3>
+      <div class="teaching-card">
+        <p><strong>ETF</strong> 的全称是 Exchange Traded Fund，中文叫"交易所交易基金"。简单说，它就是一个<strong>装了一篮子股票的"篮子"</strong>，你买一份 ETF 就等于同时持有了篮子里所有的股票。</p>
+        <p>举个最直观的例子：你花 500 美元买一份 <strong>标普500 ETF</strong>（比如 VOO 或 SPY），这 500 美元就被分散投到了苹果、微软、亚马逊、谷歌、英伟达等<strong>500 家美国最大公司</strong>中。你不需要花几万美元去一一买入这些股票，一份 ETF 就够了。</p>
+        <p>ETF 可以在证券交易所像普通股票一样买卖，价格实时变动，流动性很好。同时它又像共同基金一样分散投资，费用却比共同基金低得多。</p>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>⚖️ ETF vs 股票 vs 共同基金</h3>
+      <div class="table-wrapper">
+        <table class="etf-table">
+          <thead>
+            <tr><th>对比维度</th><th>ETF</th><th>单只股票</th><th>共同基金</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>分散程度</td><td><span class="etf-tag green">高（数十到数百只）</span></td><td>低（仅一只）</td><td><span class="etf-tag green">高</span></td></tr>
+            <tr><td>交易方式</td><td>实时交易，像股票一样</td><td>实时交易</td><td>每日收盘后按净值交易</td></tr>
+            <tr><td>最低买入</td><td><span class="etf-tag green">1股起（几十到几百美元）</span></td><td>1股起</td><td>通常 1000 美元起</td></tr>
+            <tr><td>管理费</td><td><span class="etf-tag green">极低 0.03%~0.10%</span></td><td>0%</td><td>较高 0.5%~1.5%</td></tr>
+            <tr><td>适合人群</td><td><span class="etf-tag blue">所有投资者</span></td><td>有研究能力的投资者</td><td>偏好被动管理</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="teaching-tip">
+        💡 <strong>核心建议</strong>：对于绝大多数新手来说，从 ETF 开始是最安全、最省心的选择。把 80% 的资金配置在 ETF 上，再用 20% 去研究个股，是一个非常理性的起步策略。
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>🏆 美股最经典的6只ETF</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:14px;">以下是被全球投资者广泛使用的核心 ETF，每个都值得了解：</p>
+
+      <div class="etf-card">
+        <div class="etf-symbol">VOO</div>
+        <div class="etf-desc">
+          <h4>先锋标普500 ETF <span class="etf-tag blue">最推荐</span></h4>
+          <p>跟踪标普500指数，持有美国最大的500家公司。费用率仅 <strong>0.03%</strong>（每1万美元仅收3美元）。VOO 是全世界最受个人投资者欢迎的 ETF 之一——简单、便宜、长期回报稳健。年化回报约 10-12%。</p>
+        </div>
+      </div>
+
+      <div class="etf-card">
+        <div class="etf-symbol">SPY</div>
+        <div class="etf-desc">
+          <h4>SPDR 标普500 ETF <span class="etf-tag purple">最老牌</span></h4>
+          <p>和 VOO 一样跟踪标普500，但它是历史上第一只 ETF（1993年推出），流动性极高，期权交易丰富。费用率 0.09%，比 VOO 稍贵但仍是极低水平。适合需要用期权做对冲的投资者。</p>
+        </div>
+      </div>
+
+      <div class="etf-card">
+        <div class="etf-symbol">QQQ</div>
+        <div class="etf-desc">
+          <h4>景顺纳斯达克100 ETF <span class="etf-tag green">高成长</span></h4>
+          <p>跟踪纳斯达克100指数，持有美国最大的100家非金融公司，重仓科技股（苹果、微软、英伟达、谷歌、亚马逊等）。近10年年化回报约 <strong>15%+</strong>，远超大盘。但同时波动也更大，适合能承受 20-30% 回撤的投资者。</p>
+        </div>
+      </div>
+
+      <div class="etf-card">
+        <div class="etf-symbol">VT</div>
+        <div class="etf-desc">
+          <h4>先锋全球股票 ETF <span class="etf-tag blue">全球配置</span></h4>
+          <p>覆盖全球约 60% 的股票市场——约 60% 美国 + 40% 其他发达国家/新兴市场（日本、英国、中国、法国等）。费用率 0.07%。"买 VT 就是买全世界"，不用判断哪个市场好。适合极度追求分散的投资者。</p>
+        </div>
+      </div>
+
+      <div class="etf-card">
+        <div class="etf-symbol">BND</div>
+        <div class="etf-desc">
+          <h4>先锋总债券市场 ETF <span class="etf-tag purple">低风险</span></h4>
+          <p>持有美国各类债券（国债、企业债、抵押债券等），费用率 0.03%。适合用来做资产配置中的"压舱石"——股票跌的时候债券往往上涨。经典配置：<strong>60% VOO + 40% BND</strong>。</p>
+        </div>
+      </div>
+
+      <div class="etf-card">
+        <div class="etf-symbol">SCHD</div>
+        <div class="etf-desc">
+          <h4>嘉信美国股息 ETF <span class="etf-tag green">分红派息</span></h4>
+          <p>专注于持续派发高股息的公司（可口可乐、宝洁、思科等），股息率约 3.5%。费用率 0.06%。适合追求稳定现金流的投资者，特别适合退休/半退休人群，也适合长期定投复利。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>🎯 如何选择适合自己的ETF？</h3>
+      <div class="teaching-card">
+        <p>选择 ETF 要看三个方面：</p>
+        <ol class="teaching-list" style="margin-top:10px;">
+          <li><strong>风险承受能力</strong>：如果跌 30% 你会睡不着，选 VOO 或 VT；如果能承受波动，可加 QQQ</li>
+          <li><strong>投资时间周期</strong>：5 年以上选高成长（QQQ），3-5 年选均衡（VOO），1-3 年选保守（BND）</li>
+          <li><strong>投资目标</strong>：追求总收益 → VOO / QQQ；追求分红收入 → SCHD；全球配置 → VT</li>
+        </ol>
+        <div class="teaching-tip" style="margin-top:16px;">
+          💡 最简单的配置公式：<strong>VOO + 根据年龄调整的 BND 比例</strong>。<br>
+          "100 减去你的年龄"就是股票 ETF 的百分比。30 岁 = 70% VOO + 30% BND，50 岁 = 50% VOO + 50% BND。
+        </div>
+      </div>
+    </section>
+
+    <!-- SVG: 定投复利可视化 -->
+    <div class="visual-chart">
+      <svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" style="max-width:660px;">
+        <defs>
+          <linearGradient id="barGrad1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.5"/></linearGradient>
+          <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.5"/></linearGradient>
+        </defs>
+        <text x="330" y="30" text-anchor="middle" fill="var(--text)" font-size="16" font-weight="700">每月定投 $500 于 VOO — 20年复利增长</text>
+        <!-- 柱状图示例 -->
+        <rect x="60" y="170" width="70" height="20" rx="4" fill="url(#barGrad1)" opacity="0.6"/>
+        <text x="95" y="162" text-anchor="middle" fill="var(--text-muted)" font-size="9">第1年</text>
+        <text x="95" y="192" text-anchor="middle" fill="var(--text-muted)" font-size="9">$6,000</text>
+
+        <rect x="170" y="130" width="70" height="60" rx="4" fill="url(#barGrad1)"/>
+        <text x="205" y="122" text-anchor="middle" fill="var(--text-muted)" font-size="9">第5年</text>
+        <text x="205" y="192" text-anchor="middle" fill="var(--text-muted)" font-size="9">$3.8万</text>
+
+        <rect x="280" y="80" width="70" height="110" rx="4" fill="url(#barGrad2)" opacity="0.8"/>
+        <text x="315" y="72" text-anchor="middle" fill="var(--text-muted)" font-size="9">第10年</text>
+        <text x="315" y="192" text-anchor="middle" fill="var(--text-muted)" font-size="9">$10.3万</text>
+
+        <rect x="390" y="40" width="70" height="150" rx="4" fill="url(#barGrad2)"/>
+        <text x="425" y="32" text-anchor="middle" fill="var(--text-muted)" font-size="9">第15年</text>
+        <text x="425" y="192" text-anchor="middle" fill="var(--text-muted)" font-size="9">$23.8万</text>
+
+        <rect x="500" y="10" width="80" height="180" rx="4" fill="url(#barGrad2)" fill-opacity="0.9"/>
+        <text x="540" y="195" text-anchor="middle" fill="var(--text)" font-size="10" font-weight="700">第20年</text>
+        <text x="540" y="208" text-anchor="middle" fill="var(--accent-hover)" font-size="11" font-weight="700">$49.6万</text>
+      </svg>
+      <div class="visual-chart-caption">图：每月定投 $500 到 VOO，假设年化收益 10%，20年后资产增长示意</div>
+    </div>
+
+    <section class="teaching-section">
+      <h3>📅 定投策略 — 懒人赚钱法</h3>
+      <div class="teaching-card">
+        <p><strong>定投的核心理念</strong>：在固定时间投入固定金额，不管市场高低。这个策略之所以有效，是因为它解决了几乎所有新手都会犯的两个错误——<strong>追涨杀跌</strong>和<strong>择时失败</strong>。</p>
+        <p>举例：如果每个月 1 号投入 $500 买 VOO，市场涨的时候你买入少一些份额，市场跌的时候你买入更多份额。长期来看，你的平均买入成本会低于市场的平均价格。这就是"<strong>摊平成本法</strong>"。</p>
+        <p>根据历史数据，从 2000 年到 2025 年，即使你在 2000 年科技泡沫最高点开始定投标普500，到 2025 年你的年化回报仍然超过 <strong>7%</strong>。如果你能坚持在每次大跌（2008、2020、2022）时不恐慌卖出反而持续买入，你的回报会远超大多数人。</p>
+        <div class="teaching-tip">
+          🚀 <strong>实操建议</strong>：在券商设置每月自动定投，把 ETF 当作"自动存钱罐"，忘记它的存在。最好的定投就是"设好了就不看"。
+        </div>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>📋 买入ETF的实操步骤</h3>
+      <div class="teaching-card">
+        <ol class="teaching-list">
+          <li><strong>开一个美股券商账户</strong>（推荐老虎证券、富途 moomoo 或盈透 IBKR）</li>
+          <li><strong>入金</strong>（通过跨境汇款将资金存入券商账户）</li>
+          <li><strong>搜索ETF代码</strong>：比如在搜索框输入 VOO 或 SPY</li>
+          <li><strong>选择买入方式</strong>：选择"市价单"（Market Order）或"限价单"（Limit Order）</li>
+          <li><strong>输入数量</strong>：ETF 可以买零股（Fractional Shares），即使只有 $100 也能买</li>
+          <li><strong>确认交易</strong>：仔细检查价格和数量后，点击买入</li>
+          <li><strong>设置定投</strong>：大部分券商支持自动定期买入，设置好就不再操心</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="teaching-section">
+      <h3>⚠️ 常见误区与风险</h3>
+      <div class="teaching-card">
+        <div class="pros-cons">
+          <div class="pros-cons-box pros">
+            <h4>✅ 正确做法</h4>
+            <ul>
+              <li>长期持有，至少 5 年以上</li>
+              <li>大跌时保持冷静，继续定投</li>
+              <li>只选 1-2 只 ETF 核心持仓</li>
+              <li>每年做一次再平衡</li>
+            </ul>
+          </div>
+          <div class="pros-cons-box cons">
+            <h4>❌ 常见错误</h4>
+            <ul>
+              <li>同时买十只ETF（过度分散）</li>
+              <li>大涨追进去、大跌就卖出</li>
+              <li>以为ETF保本不亏钱</li>
+              <li>不看费用率，买无关ETF</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 底部导航 ===== -->
+    <div class="teaching-footer">
+      <div style="margin-bottom:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <a href="account-guide.html" class="btn-back-teaching">🏦 美股开户指南</a>
+        <a href="glossary.html" class="btn-back-teaching">📖 美股常见术语</a>
+      </div>
+      <a href="teaching.html" class="btn-primary">← 返回教学首页</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>本网站仅供教育目的，不构成任何投资建议。数据仅供参考。</p>
+      <p>投资有风险，入市需谨慎。Past performance does not guarantee future results.</p>
+      <p class="footer-copy">&copy; 2026 US Stock Guide for Beginners ｜ <a href="privacy.html" style="color:var(--text-muted)">隐私政策</a> ｜ <a href="terms.html" style="color:var(--text-muted)">服务条款</a></p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){var t=document.getElementById('navToggle'),n=document.querySelector('.nav-links');if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open')});n.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){n.classList.remove('open')})})}})();
+  (function(){var cards=document.querySelectorAll('.teaching-hero h1,.teaching-hero .hero-subtitle,.teaching-section,.teaching-card,.teaching-tip,.visual-chart,.etf-card,.pros-cons,.teaching-footer,.btn-primary,.btn-back-teaching');if(cards.length>0&&'IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});cards.forEach(function(c,i){c.classList.add('anim-in');c.style.transitionDelay=(i%3)*0.08+'s';obs.observe(c)})}})();
+  </script>
+  <script src="cookie-banner.js"></script>
+</body>
+</html>
