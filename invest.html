@@ -46,6 +46,77 @@
     </div>
   </div>
 
+  <!-- ===== 使用教程 (可折叠) ===== -->
+  <div class="tutorial-wrapper" id="tutorialWrapper">
+    <div class="tutorial-toggle-bar">
+      <button class="tutorial-toggle-btn" id="btnToggleTutorial">
+        <span>📚 如何使用投资小学堂？（点击展开教程）</span>
+        <span class="tutorial-arrow" id="tutorialArrow">▼</span>
+      </button>
+    </div>
+    <div class="tutorial-body" id="tutorialBody">
+      <div class="tutorial-steps">
+        <!-- Step 1 -->
+        <div class="tut-step">
+          <div class="tut-step-num">1</div>
+          <div class="tut-step-content">
+            <h4>了解你的虚拟账户</h4>
+            <p>页面顶部显示你的<strong>可用资金（$100,000）</strong>、<strong>持仓市值</strong>（你持有的股票总价值）、<strong>总资产</strong>（现金+持仓）和<strong>总收益率</strong>。这些数字会随着你的交易实时变化。</p>
+            <div class="tut-highlight">💡 初始资金 $100,000 是虚拟美元，你可以放心练习，不会损失真金白银。</div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="tut-step">
+          <div class="tut-step-num">2</div>
+          <div class="tut-step-content">
+            <h4>搜索和浏览股票</h4>
+            <p>在左侧<strong>美股行情</strong>表格上方的搜索框中，输入股票代码（如 AAPL）或公司名称（如 Apple）。表格显示每只股票的<strong>最新价、涨跌额、涨跌幅</strong>。绿色表示上涨，红色表示下跌。</p>
+            <div class="tut-highlight">💡 点击任意一行股票，或点击右侧的<strong>"交易"</strong>按钮，打开买卖面板。</div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="tut-step">
+          <div class="tut-step-num">3</div>
+          <div class="tut-step-content">
+            <h4>买入第一支股票</h4>
+            <p>点击"交易"按钮后，底部出现交易面板。默认选中<strong>"买入"</strong>标签——确认股票名称和当前价格，输入你想买的<strong>股数</strong>（最少1股），系统自动计算预计花费。确认无误后点击<strong>"确认买入"</strong>。</p>
+            <div class="tut-highlight">💡 美股最小交易单位是 <strong>1 股</strong>，不像A股必须是100股（1手）。$100 就能买 0.5 股 Apple？对的！</div>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="tut-step">
+          <div class="tut-step-num">4</div>
+          <div class="tut-step-content">
+            <h4>查看你的持仓</h4>
+            <p>买入成功后，页面右侧<strong>"我的持仓"</strong>表格会显示你持有的股票——代码、数量、<strong>成本价</strong>（买入均价）、<strong>现价</strong>和<strong>盈亏</strong>（绿色盈利/红色亏损）。顶部资产栏同步更新。</p>
+            <div class="tut-highlight">💡 盈亏 = (现价 - 成本价) × 持股数量。只要不卖，盈亏只是"浮动"的——这就是账面盈亏。</div>
+          </div>
+        </div>
+        <!-- Step 5 -->
+        <div class="tut-step">
+          <div class="tut-step-num">5</div>
+          <div class="tut-step-content">
+            <h4>卖出股票</h4>
+            <p>在交易面板中切换到<strong>"卖出"</strong>标签——系统自动显示你当前持仓的该股票和可用数量。输入想卖出的股数，系统计算预计收入。点击<strong>"确认卖出"</strong>完成操作。</p>
+            <div class="tut-highlight">💡 卖出后现金回到账户，你可以用这笔钱买其他股票。模拟交易没有手续费（简化版），实际操作中有佣金。</div>
+          </div>
+        </div>
+        <!-- Step 6 -->
+        <div class="tut-step">
+          <div class="tut-step-num">6</div>
+          <div class="tut-step-content">
+            <h4>跟踪交易记录</h4>
+            <p>右侧<strong>"交易记录"</strong>列表显示所有买入和卖出的历史——每笔交易的时间、股票、数量、价格和金额。<strong>红色标签=买入</strong>，<strong>绿色标签=卖出</strong>。</p>
+            <div class="tut-highlight">💡 股票价格每 8 秒自动波动一次，模拟真实行情的动态变化。看看你的投资组合如何随市场变化！</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;padding:16px 0 0;">
+        <button class="tut-close-btn" id="btnCloseTutorial">收起教程 ↑</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== 主内容区 ===== -->
   <div class="invest-main">
 

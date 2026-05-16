@@ -1463,3 +1463,61 @@ img{max-width:100%}
   .invest-search{width:100%}
   .invest-table thead th,.invest-table tbody td{padding:8px 10px;font-size:0.78rem}
 }
+
+/* ================================================================
+   投资小学堂 — 使用教程
+   ================================================================ */
+.tutorial-wrapper{
+  max-width:1120px;margin:0 auto;padding:0 24px
+}
+.tutorial-toggle-bar{text-align:center;margin-bottom:8px}
+.tutorial-toggle-btn{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--text);font-size:0.95rem;font-weight:600;cursor:pointer;
+  padding:14px 28px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all var(--transition)
+}
+.tutorial-toggle-btn:hover{border-color:var(--accent);color:var(--accent-hover);background:var(--accent-dim)}
+.tutorial-arrow{font-size:0.75rem;color:var(--text-muted);transition:transform 0.3s ease}
+.tutorial-wrapper.open .tutorial-arrow{transform:rotate(180deg)}
+.tutorial-wrapper.open .tutorial-toggle-btn{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-color:transparent}
+
+.tutorial-body{
+  background:var(--bg-card);border:1px solid var(--border);border-top:none;
+  border-radius:0 0 var(--radius-sm) var(--radius-sm);padding:0 28px 24px;
+  max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),padding 0.5s ease
+}
+.tutorial-wrapper.open .tutorial-body{max-height:2000px;padding:8px 28px 24px}
+
+.tutorial-steps{display:flex;flex-direction:column;gap:0}
+.tut-step{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.tut-step:last-child{border-bottom:none}
+.tut-step-num{
+  flex-shrink:0;width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--purple));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1.1rem;box-shadow:0 3px 10px rgba(59,130,246,0.3)
+}
+.tut-step-content{flex:1}
+.tut-step-content h4{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.tut-step-content p{font-size:0.9rem;color:var(--text-secondary);line-height:1.75}
+.tut-step-content strong{color:var(--text)}
+.tut-highlight{
+  margin-top:10px;padding:10px 16px;background:var(--accent-dim);
+  border:1px solid rgba(59,130,246,0.2);border-radius:var(--radius-xs);
+  font-size:0.85rem;color:var(--accent-hover);line-height:1.6
+}
+
+.tut-close-btn{
+  padding:8px 24px;border:1px solid var(--border);background:var(--bg-surface);
+  color:var(--text-muted);font-size:0.85rem;border-radius:20px;
+  cursor:pointer;transition:all var(--transition)
+}
+.tut-close-btn:hover{color:var(--text);border-color:var(--border-light)}
+
+@media (max-width:768px){
+  .tutorial-body{padding:0 18px 18px}
+  .tutorial-wrapper.open .tutorial-body{padding:8px 18px 18px}
+  .tut-step{gap:12px}
+  .tut-step-num{width:36px;height:36px;font-size:0.95rem}
+}

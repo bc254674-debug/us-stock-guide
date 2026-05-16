@@ -386,6 +386,33 @@ function initInvest() {
     navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
     navLinks.querySelectorAll('a').forEach(function(l) { l.addEventListener('click', function() { navLinks.classList.remove('open'); }); });
   }
+
+  // ---- 使用教程折叠 ----
+  var tutorialWrapper = document.getElementById('tutorialWrapper');
+  var toggleBtn = document.getElementById('btnToggleTutorial');
+  var closeBtn = document.getElementById('btnCloseTutorial');
+  var TUT_KEY = 'invest_tutorial_collapsed';
+
+  function toggleTutorial() {
+    var isOpen = tutorialWrapper.classList.contains('open');
+    if (isOpen) {
+      tutorialWrapper.classList.remove('open');
+      toggleBtn.querySelector('span').textContent = '📚 如何使用投资小学堂？（点击展开教程）';
+      localStorage.setItem(TUT_KEY, 'collapsed');
+    } else {
+      tutorialWrapper.classList.add('open');
+      toggleBtn.querySelector('span').textContent = '📚 如何使用投资小学堂？（点击收起教程）';
+      localStorage.setItem(TUT_KEY, 'open');
+    }
+  }
+
+  if (localStorage.getItem(TUT_KEY) !== 'collapsed') {
+    tutorialWrapper.classList.add('open');
+    toggleBtn.querySelector('span').textContent = '📚 如何使用投资小学堂？（点击收起教程）';
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener('click', toggleTutorial);
+  if (closeBtn) closeBtn.addEventListener('click', toggleTutorial);
 }
 
 // 定时刷新价格
