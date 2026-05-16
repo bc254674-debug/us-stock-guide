@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股指数 — 详细行情</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <!-- Google AdSense — 替换 ca-pub-XXXXXXXXXXXXXXXX 为你的发布商ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body class="dashboard-body">
+
+  <!-- ===== 顶栏 ===== -->
+  <header class="dash-header">
+    <div class="dash-header-left">
+      <a href="index.html" class="back-btn" id="backBtn">← 返回</a>
+      <h1 class="dash-title" id="dashTitle">加载中...</h1>
+    </div>
+    <div class="dash-header-right">
+      <span class="update-time" id="updateTime">数据更新中...</span>
+    </div>
+  </header>
+
+  <!-- ===== 实时报价条 ===== -->
+  <div class="price-strip" id="priceStrip">
+    <div class="price-main">
+      <div class="price-current" id="priceCurrent">--</div>
+      <div class="price-change" id="priceChange">--</div>
+      <div class="price-change-pct" id="priceChangePct">--</div>
+    </div>
+    <div class="price-details">
+      <div class="price-item">
+        <span class="price-label">开盘价</span>
+        <span class="price-value" id="priceOpen">--</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">最高价</span>
+        <span class="price-value high" id="priceHigh">--</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">最低价</span>
+        <span class="price-value low" id="priceLow">--</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">前收盘</span>
+        <span class="price-value" id="pricePrev">--</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">成交量</span>
+        <span class="price-value" id="priceVolume">--</span>
+      </div>
+      <div class="price-item">
+        <span class="price-label">成交额</span>
+        <span class="price-value" id="priceTurnover">--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 时间周期选择 ===== -->
+  <div class="timeframe-bar">
+    <span class="timeframe-label">K线周期：</span>
+    <button class="tf-btn" data-days="22">1个月</button>
+    <button class="tf-btn" data-days="66">3个月</button>
+    <button class="tf-btn" data-days="132">6个月</button>
+    <button class="tf-btn active" data-days="252">1年</button>
+    <button class="tf-btn" data-days="504">2年</button>
+    <div class="ma-toggles">
+      <label class="ma-toggle"><input type="checkbox" id="ma5" checked> MA5</label>
+      <label class="ma-toggle"><input type="checkbox" id="ma10" checked> MA10</label>
+      <label class="ma-toggle"><input type="checkbox" id="ma20" checked> MA20</label>
+      <label class="ma-toggle"><input type="checkbox" id="ma60"> MA60</label>
+    </div>
+  </div>
+
+  <!-- ===== K线图 ===== -->
+  <div class="chart-container" id="klineChart"></div>
+
+  <!-- ===== 成交量图 ===== -->
+  <div class="chart-container chart-volume" id="volumeChart"></div>
+
+  <!-- ===== 统计卡片 ===== -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-card-label">52周最高</div>
+      <div class="stat-card-value high" id="stat52High">--</div>
+      <div class="stat-card-date" id="stat52HighDate"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">52周最低</div>
+      <div class="stat-card-value low" id="stat52Low">--</div>
+      <div class="stat-card-date" id="stat52LowDate"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">成交量最高日</div>
+      <div class="stat-card-value" id="statMaxVol">--</div>
+      <div class="stat-card-date" id="statMaxVolDate"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">成交量最低日</div>
+      <div class="stat-card-value" id="statMinVol">--</div>
+      <div class="stat-card-date" id="statMinVolDate"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">日均波动幅度</div>
+      <div class="stat-card-value" id="statAvgRange">--</div>
+      <div class="stat-card-date">日均 (高-低) / 开盘</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">上涨 / 下跌 天数</div>
+      <div class="stat-card-value" id="statUpDown">--</div>
+      <div class="stat-card-date" id="statUpDownPct"></div>
+    </div>
+  </div>
+
+  <!-- ===== 主要成分股表现 ===== -->
+  <div class="constituents-section">
+    <h2 class="section-heading">主要成分股表现</h2>
+    <div class="constituents-table-wrap">
+      <table class="constituents-table" id="constituentsTable">
+        <thead>
+          <tr>
+            <th>代码</th>
+            <th>公司名称</th>
+            <th>最新价</th>
+            <th>涨跌幅</th>
+            <th>成交量</th>
+            <th>市值</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 说明 ===== -->
+  <footer class="dash-footer">
+    <p>⚠️ 本页K线数据为模拟生成，仅供学习参考，不构成投资建议。实时报价数据同样为模拟数据。</p>
+    <p>投资有风险，入市需谨慎。</p>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

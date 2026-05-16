@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美股三大指数 — 从零开始读懂美股</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <!-- Google AdSense — 替换 ca-pub-XXXXXXXXXXXXXXXX 为你的发布商ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ===== 导航栏 ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">← 返回首页</a>
+      <ul class="nav-links">
+        <li><a href="#compare">对比</a></li>
+        <li><a href="#beginner">新手入门</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    </div>
+  </nav>
+
+  <!-- ===== 页面标题 ===== -->
+  <header class="hero" style="min-height:auto; padding:90px 24px 48px;">
+    <div class="hero-content">
+      <h1 class="hero-title">美国股市三大指数</h1>
+      <p class="hero-subtitle">纳斯达克 · 标普500 · 道琼斯 — 从零开始读懂美股</p>
+    </div>
+  </header>
+
+  <!-- ===== 概览 ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">什么是指数？</h2>
+      <p class="section-intro">
+        股票指数就像是一把"<strong>温度计</strong>"，用来衡量一群股票的整体表现。
+        你不用逐个查看几千只股票的涨跌，看一眼指数就知道市场整体的"冷热"。
+      </p>
+
+      <div class="cards-row" id="cardsRow">
+        <a href="nasdaq.html" class="info-card" data-index="nasdaq">
+          <div class="card-icon">📊</div>
+          <h3>纳斯达克综合指数</h3>
+          <p><strong>科技股的大本营</strong>。包含在纳斯达克交易所上市的全部股票（约3,000+只），以苹果、微软、英伟达等科技巨头为代表。</p>
+          <ul>
+            <li>成立时间：1971年</li>
+            <li>成分股数量：~3,000+</li>
+            <li>特点：科技股权重极高</li>
+          </ul>
+        </a>
+        <a href="sp500.html" class="info-card" data-index="sp500">
+          <div class="card-icon">🏛️</div>
+          <h3>标普500指数</h3>
+          <p><strong>美国经济的晴雨表</strong>。精选500家美国大型上市公司，覆盖面最广，是专业投资者最看重的指数。</p>
+          <ul>
+            <li>成立时间：1957年</li>
+            <li>成分股数量：500</li>
+            <li>特点：行业覆盖广、代表性强</li>
+          </ul>
+        </a>
+        <a href="dowjones.html" class="info-card" data-index="dowjones">
+          <div class="card-icon">🏭</div>
+          <h3>道琼斯工业平均指数</h3>
+          <p><strong>最古老的指数</strong>。只包含30家美国最顶尖的蓝筹公司，是普通大众最熟悉的"美股"代名词。</p>
+          <ul>
+            <li>成立时间：1896年</li>
+            <li>成分股数量：30</li>
+            <li>特点：历史悠久、蓝筹代表</li>
+          </ul>
+        </a>
+      </div>
+
+      <!-- 悬停详情面板 -->
+      <div class="hover-detail" id="hoverDetail">
+        <div class="hover-detail-inner" id="hoverDetailInner">
+          <div class="hover-detail-placeholder">
+            <span class="placeholder-icon">👆</span>
+            <p>将鼠标悬停在上方卡片上，查看该指数的详细介绍</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 对比 ===== -->
+  <section class="section section-alt" id="compare">
+    <div class="container">
+      <h2 class="section-title">三大指数 一图对比</h2>
+      <p class="section-intro">数字不会说谎。以下是三大指数在6个核心维度上的直观对比——帮你一眼看清谁更适合你。</p>
+
+      <!-- 亮点数字卡片 -->
+      <div class="compare-highlights">
+        <div class="compare-highlight nasdaq-hl" data-highlight-index="nasdaq">
+          <span class="hl-icon">🚀</span>
+          <div class="hl-name">纳斯达克综合</div>
+          <div class="hl-metric"><span class="hl-value green">~15%+</span></div>
+          <div class="hl-label">近10年年化回报</div>
+          <div class="hl-sub">三大指数中最高 · 波动也最大</div>
+        </div>
+        <div class="compare-highlight sp500-hl" data-highlight-index="sp500">
+          <span class="hl-icon">🎯</span>
+          <div class="hl-name">标普500</div>
+          <div class="hl-metric"><span class="hl-value blue">~80%</span></div>
+          <div class="hl-label">覆盖美股总市值</div>
+          <div class="hl-sub">全球基金经理的业绩及格线</div>
+        </div>
+        <div class="compare-highlight dow-hl" data-highlight-index="dowjones">
+          <span class="hl-icon">🏛️</span>
+          <div class="hl-name">道琼斯工业</div>
+          <div class="hl-metric"><span class="hl-value purple">130年</span></div>
+          <div class="hl-label">历史跨度</div>
+          <div class="hl-sub">1896年至今 · 全球最古老指数</div>
+        </div>
+      </div>
+
+      <!-- 雷达图 + 柱状图 -->
+      <div class="compare-visuals">
+        <div class="compare-radar" id="compareRadar"></div>
+        <div class="compare-bars-section">
+          <div class="compare-bars-title">核心指标对比</div>
+
+          <div class="compare-bar-group">
+            <div class="compare-bar-label"><span>📈 近10年年化回报</span><span style="font-size:0.75rem;color:var(--text-muted)">越高越好 →</span></div>
+            <div class="compare-bar-row" data-bar-index="nasdaq">
+              <span class="compare-bar-name">纳斯达克</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill nasdaq" style="--bar-w:95%"></div></div>
+              <span class="compare-bar-value" style="color:var(--green)">~15%</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="sp500">
+              <span class="compare-bar-name">标普500</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill sp500" style="--bar-w:69%"></div></div>
+              <span class="compare-bar-value" style="color:var(--accent)">~11%</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="dowjones">
+              <span class="compare-bar-name">道琼斯</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill dow" style="--bar-w:50%"></div></div>
+              <span class="compare-bar-value" style="color:var(--purple)">~8%</span>
+            </div>
+          </div>
+
+          <div class="compare-bar-group">
+            <div class="compare-bar-label"><span>🎢 年化波动率</span><span style="font-size:0.75rem;color:var(--text-muted)">越低越稳 →</span></div>
+            <div class="compare-bar-row" data-bar-index="nasdaq">
+              <span class="compare-bar-name">纳斯达克</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill nasdaq" style="--bar-w:91%"></div></div>
+              <span class="compare-bar-value" style="color:var(--red)">~20%</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="sp500">
+              <span class="compare-bar-name">标普500</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill sp500" style="--bar-w:68%"></div></div>
+              <span class="compare-bar-value">~15%</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="dowjones">
+              <span class="compare-bar-name">道琼斯</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill dow" style="--bar-w:59%"></div></div>
+              <span class="compare-bar-value" style="color:var(--green)">~13%</span>
+            </div>
+          </div>
+
+          <div class="compare-bar-group">
+            <div class="compare-bar-label"><span>🧩 成分股数量</span><span style="font-size:0.75rem;color:var(--text-muted)">越多越分散 →</span></div>
+            <div class="compare-bar-row" data-bar-index="nasdaq">
+              <span class="compare-bar-name">纳斯达克</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill nasdaq" style="--bar-w:100%"></div></div>
+              <span class="compare-bar-value" style="color:var(--green)">3,000+</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="sp500">
+              <span class="compare-bar-name">标普500</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill sp500" style="--bar-w:40%"></div></div>
+              <span class="compare-bar-value" style="color:var(--accent)">500</span>
+            </div>
+            <div class="compare-bar-row" data-bar-index="dowjones">
+              <span class="compare-bar-name">道琼斯</span>
+              <div class="compare-bar-track"><div class="compare-bar-fill dow" style="--bar-w:12%"></div></div>
+              <span class="compare-bar-value" style="color:var(--purple)">30</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 雷达图图例 -->
+      <div class="compare-legend">
+        <div class="compare-legend-item"><span class="compare-legend-dot n"></span> 纳斯达克 — 高回报高波动</div>
+        <div class="compare-legend-item"><span class="compare-legend-dot s"></span> 标普500 — 均衡之王</div>
+        <div class="compare-legend-item"><span class="compare-legend-dot d"></span> 道琼斯 — 百年稳健</div>
+      </div>
+
+      <!-- 详细对比表格 -->
+      <div class="table-wrapper" style="margin-top:40px;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>对比维度</th>
+              <th class="col-nasdaq">纳斯达克综合</th>
+              <th class="col-sp500">标普500</th>
+              <th class="col-dow">道琼斯工业</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>成分股数量</td><td>~3,000+ 只（最广）</td><td>500 只（精选）</td><td>30 只（精英）</td></tr>
+            <tr><td>成立时间</td><td>1971年（55年历史）</td><td>1957年（69年历史）</td><td>1896年（130年历史）</td></tr>
+            <tr><td>加权方式</td><td>市值加权 — 大公司说了算</td><td>市值加权 — 大公司说了算</td><td><strong>价格加权</strong> — 高价股说了算</td></tr>
+            <tr><td>行业侧重</td><td>科技股占 ~50%，极度偏科</td><td>11行业全覆盖，最均衡</td><td>多元蓝筹，传统行业多</td></tr>
+            <tr><td>覆盖市值</td><td>~20万亿美元</td><td><strong>~40万亿美元（占美股80%）</strong></td><td>~12万亿美元</td></tr>
+            <tr><td>近10年年化回报</td><td><strong>~15%+（最高）</strong></td><td>~10-13%</td><td>~7-9%</td></tr>
+            <tr><td>年化波动率</td><td><strong>~20%（最高）</strong></td><td>~15%（中等）</td><td>~13%（最低）</td></tr>
+            <tr><td>最大回撤（2008年）</td><td>-55%（暴跌最狠）</td><td>-38%</td><td>-34%（最扛跌）</td></tr>
+            <tr><td>入选难度</td><td>在纳斯达克挂牌即可</td><td>需盈利 + 市值≥180亿</td><td>委员会严格挑选，极难</td></tr>
+            <tr><td>主要投资者</td><td>成长型投资者、科技信徒</td><td><strong>机构、养老金、全球央行</strong></td><td>散户、大众媒体关注</td></tr>
+            <tr><td>知名ETF</td><td>QQQ（追踪纳斯达克100）</td><td>SPY / VOO / IVV</td><td>DIA</td></tr>
+            <tr><td>一句话总结</td><td>高回报 + 高波动，像"跑车"</td><td><strong>稳健增长，像"豪华轿车"</strong></td><td>稳如老狗，像"经典老爷车"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="summary-box">
+        <h3>选哪个？看你的投资性格</h3>
+        <p>没有一个指数是"最好的"——<strong>只有最适合你的</strong>。如果你年轻、收入稳定、能承受短期大跌，纳斯达克的高回报潜力更适合你；如果你追求稳健增长、打算长期定投作为养老金，标普500是最稳妥的选择；如果你初次接触美股、希望风险最低，道琼斯是最友好的入门项。大多数有经验的投资者会<strong>三者搭配</strong>：核心仓位放标普500，增长仓位配纳斯达克100（QQQ），防御仓位配道琼斯（DIA）或债券。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 新手入门 ===== -->
+  <section class="section" id="beginner">
+    <div class="container">
+      <h2 class="section-title">新手投资指南</h2>
+      <p class="section-intro">五步开启你的美股投资之旅——点击每个步骤展开详情与互动工具</p>
+
+      <!-- 进度步骤器 -->
+      <div class="beginner-stepper" id="beginnerStepper">
+        <div class="stepper-node">
+          <div class="stepper-dot active" data-step="1">1</div>
+        </div>
+        <div class="stepper-line" data-line="1"></div>
+        <div class="stepper-node">
+          <div class="stepper-dot" data-step="2">2</div>
+        </div>
+        <div class="stepper-line" data-line="2"></div>
+        <div class="stepper-node">
+          <div class="stepper-dot" data-step="3">3</div>
+        </div>
+        <div class="stepper-line" data-line="3"></div>
+        <div class="stepper-node">
+          <div class="stepper-dot" data-step="4">4</div>
+        </div>
+        <div class="stepper-line" data-line="4"></div>
+        <div class="stepper-node">
+          <div class="stepper-dot" data-step="5">5</div>
+        </div>
+      </div>
+
+      <!-- 交互步骤卡片 -->
+      <div class="interactive-steps" id="interactiveSteps">
+
+        <!-- Step 1: 开户 -->
+        <div class="istep open">
+          <div class="istep-header" data-step="1">
+            <div class="istep-num">1</div>
+            <div class="istep-title">开通美股账户</div>
+            <span class="istep-arrow">▼</span>
+          </div>
+          <div class="istep-body"><div class="istep-inner">
+            <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">准备<strong>身份证（或护照）+ 地址证明</strong>，选择一家受美国监管的券商，在线填表即可。审核通常1-3个工作日。</p>
+            <div class="key-points">
+              <div class="key-point"><strong>盈透证券 IBKR：</strong>全球最大电子券商，产品最全、手续费极低。</div>
+              <div class="key-point"><strong>嘉信理财 Charles Schwab：</strong>美国老牌券商，零佣金，开户门槛低。</div>
+              <div class="key-point"><strong>富途 moomoo / 老虎证券：</strong>中文界面友好，适合新手入门。</div>
+              <div class="key-point"><strong>Robinhood：</strong>零佣金 + 零碎股，界面极简。</div>
+            </div>
+            <p style="margin-top:12px;font-size:0.87rem;color:var(--text-muted);">Tips：首次入金建议 $500-$2,000，先熟悉操作再逐步加仓。</p>
+          </div></div>
+        </div>
+
+        <!-- Step 2: 术语 -->
+        <div class="istep">
+          <div class="istep-header" data-step="2">
+            <div class="istep-num">2</div>
+            <div class="istep-title">掌握核心术语</div>
+            <span class="istep-arrow">▼</span>
+          </div>
+          <div class="istep-body"><div class="istep-inner">
+            <p style="color:var(--text-secondary);margin-bottom:14px;"><strong>点击卡片翻转</strong>查看每个术语的含义——这是你理解投资世界的基础语言。</p>
+            <div class="term-flip-grid">
+              <div class="term-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="term-flip-inner">
+                  <div class="term-front"><span class="term-icon">📦</span> ETF</div>
+                  <div class="term-back"><strong>交易所交易基金</strong><br>像一篮子股票的"打包商品"。买一份 = 同时买入几百只股票。风险分散、费用低。</div>
+                </div>
+              </div>
+              <div class="term-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="term-flip-inner">
+                  <div class="term-front"><span class="term-icon">🏷️</span> 费用比率</div>
+                  <div class="term-back"><strong>Expense Ratio</strong><br>ETF每年收的管理费。VOO仅0.03%，投$10,000/年只交$3。越低越好！</div>
+                </div>
+              </div>
+              <div class="term-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="term-flip-inner">
+                  <div class="term-front"><span class="term-icon">📊</span> 市盈率 PE</div>
+                  <div class="term-back"><strong>股价 ÷ 每股盈利</strong><br>衡量估值高低。PE 50 = 贵但成长预期高；PE 10 = 便宜但可能前景黯淡。</div>
+                </div>
+              </div>
+              <div class="term-flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="term-flip-inner">
+                  <div class="term-front"><span class="term-icon">💵</span> 股息</div>
+                  <div class="term-back"><strong>公司分给股东的利润</strong><br>按季度发放。标普500股息率约1.3-1.5%。股息再投资贡献了总回报的~40%。</div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Step 3: 买ETF -->
+        <div class="istep">
+          <div class="istep-header" data-step="3">
+            <div class="istep-num">3</div>
+            <div class="istep-title">从指数ETF开始——不要买个股</div>
+            <span class="istep-arrow">▼</span>
+          </div>
+          <div class="istep-body"><div class="istep-inner">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;">
+              <div>
+                <p style="color:var(--text-secondary);line-height:1.7;">研究表明<strong>超过90%的主动选股者长期跑不赢指数</strong>。专业基金经理都很难做到，更何况新手。</p>
+                <p style="margin-top:8px;color:var(--text-secondary);line-height:1.7;">巴菲特多次公开表示："对于99%的普通人来说，<strong>最佳投资策略就是持续定投低费率的标普500指数基金</strong>。"他在遗嘱中要求将遗产的90%投向标普500指数基金。</p>
+              </div>
+              <div style="text-align:center;padding:20px;background:var(--bg-surface);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <div style="font-size:3rem;margin-bottom:8px;">🛒</div>
+                <div style="font-weight:700;color:var(--text);margin-bottom:4px;">买 ETF = 买整个市场</div>
+                <div style="font-size:0.85rem;color:var(--text-muted);">一次交易，拥有数百家公司</div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Step 4: 选ETF + 互动问答 -->
+        <div class="istep">
+          <div class="istep-header" data-step="4">
+            <div class="istep-num">4</div>
+            <div class="istep-title">选择适合你的ETF</div>
+            <span class="istep-arrow">▼</span>
+          </div>
+          <div class="istep-body"><div class="istep-inner">
+            <p style="color:var(--text-secondary);margin-bottom:12px;">回答下面3个问题，帮你找到最匹配的ETF：</p>
+            <div class="etf-quiz" id="etfQuiz">
+              <div class="etf-quiz-q">
+                <span class="etf-quiz-label">1. 你的风险承受能力如何？</span>
+                <div class="etf-quiz-opts" data-q="risk">
+                  <span class="etf-quiz-opt" data-val="high">🔴 能承受大幅波动</span>
+                  <span class="etf-quiz-opt" data-val="mid">🟡 能接受中等波动</span>
+                  <span class="etf-quiz-opt" data-val="low">🟢 不想看到亏损</span>
+                </div>
+              </div>
+              <div class="etf-quiz-q">
+                <span class="etf-quiz-label">2. 你计划投资多久？</span>
+                <div class="etf-quiz-opts" data-q="horizon">
+                  <span class="etf-quiz-opt" data-val="long">📅 10年以上</span>
+                  <span class="etf-quiz-opt" data-val="mid">📅 5-10年</span>
+                  <span class="etf-quiz-opt" data-val="short">📅 不到5年</span>
+                </div>
+              </div>
+              <div class="etf-quiz-q">
+                <span class="etf-quiz-label">3. 你对科技股的看法？</span>
+                <div class="etf-quiz-opts" data-q="tech">
+                  <span class="etf-quiz-opt" data-val="yes">💻 坚信科技改变未来</span>
+                  <span class="etf-quiz-opt" data-val="neutral">🤷 无所谓</span>
+                  <span class="etf-quiz-opt" data-val="no">🏭 更喜欢传统行业</span>
+                </div>
+              </div>
+              <div class="etf-quiz-result" id="etfQuizResult">
+                <div class="result-etf" id="etfQuizResultETF"></div>
+                <div class="result-reason" id="etfQuizResultReason"></div>
+              </div>
+            </div>
+            <div class="etf-recs" style="margin-top:18px;">
+              <div class="etf-item"><strong>VOO / SPY</strong> → 追踪标普500。费用极低（0.03%），<strong>核心持仓首选</strong>。</div>
+              <div class="etf-item"><strong>QQQ</strong> → 追踪纳斯达克100。科技集中，<strong>增长仓位补充</strong>（≤总仓位40%）。</div>
+              <div class="etf-item"><strong>DIA</strong> → 追踪道琼斯30。蓝筹稳健，<strong>防御仓位</strong>。</div>
+              <div class="etf-item"><strong>VT</strong> → 追踪全球股市。最大范围分散，<strong>最省心的选择</strong>。</div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Step 5: 定投 + 复利计算器 -->
+        <div class="istep">
+          <div class="istep-header" data-step="5">
+            <div class="istep-num">5</div>
+            <div class="istep-title">坚持长期定投——时间是最强的武器</div>
+            <span class="istep-arrow">▼</span>
+          </div>
+          <div class="istep-body"><div class="istep-inner">
+            <p style="color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">美股历史上<strong>长期（10年+）年化回报约7-10%</strong>（含股息再投资）。<strong>拖动下方滑块</strong>，看看你的定投在未来会变成多少钱：</p>
+
+            <div class="compound-calc" id="compoundCalc">
+              <div class="calc-row">
+                <span class="calc-label">💰 每月投入</span>
+                <input type="range" class="calc-slider" id="calcMonthly" min="100" max="5000" step="100" value="500">
+                <span class="calc-value" id="calcMonthlyVal">$500</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-label">📅 投资年限</span>
+                <input type="range" class="calc-slider" id="calcYears" min="5" max="40" step="1" value="20">
+                <span class="calc-value" id="calcYearsVal">20 年</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-label">📈 年化回报</span>
+                <input type="range" class="calc-slider" id="calcReturn" min="5" max="15" step="0.5" value="9">
+                <span class="calc-value" id="calcReturnVal">9%</span>
+              </div>
+
+              <div class="calc-result">
+                <div class="calc-result-item">
+                  <div class="calc-result-val" id="calcInvested">$120,000</div>
+                  <div class="calc-result-label">总投入本金</div>
+                </div>
+                <div class="calc-result-item">
+                  <div class="calc-result-val green" id="calcEarnings">$340,000</div>
+                  <div class="calc-result-label">复利收益</div>
+                </div>
+                <div class="calc-result-item">
+                  <div class="calc-result-val" style="color:var(--accent-hover)" id="calcTotal">$460,000</div>
+                  <div class="calc-result-label">最终总金额</div>
+                </div>
+              </div>
+
+              <div class="calc-chart" id="calcChart"></div>
+            </div>
+
+            <p style="margin-top:16px;color:var(--text-secondary);line-height:1.7;"><strong>记住：投资不是为了"变富"，而是为了"保持购买力"。</strong>时间是你的朋友，冲动是你的敌人。熊市是"打折购物季"，坚持定投的人总是笑到最后。</p>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 互动误区翻卡 -->
+      <h3 style="text-align:center;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:6px;">打假：新手最常见误区</h3>
+      <p style="text-align:center;color:var(--text-muted);font-size:0.9rem;margin-bottom:4px;">点击每张卡片，揭开真相</p>
+      <div class="myth-buster-grid">
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon">💻</span>
+                "科技股好，我全买纳斯达克"
+                <span class="myth-tag">点击揭秘 →</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon">✅</span>
+                <strong>过于集中，大跌时容易恐慌卖出。</strong> 建议核心VOO + 适量QQQ搭配。
+              </div>
+            </div>
+          </div>
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon">⏳</span>
+                "等跌了再买"
+                <span class="myth-tag">点击揭秘 →</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon">✅</span>
+                <strong>市场大部分时间在涨，等待让你错失复利窗口。</strong> 定投无需择时。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon">📉</span>
+                "跌了50%，可以抄底了"
+                <span class="myth-tag">点击揭秘 →</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon">✅</span>
+                <strong>便宜 ≠ 会涨，接飞刀危险。</strong> 跌幅大往往有深层原因，勿盲目抄底。
+              </div>
+            </div>
+          </div>
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon">💬</span>
+                "听朋友推荐买了XXX"
+                <span class="myth-tag">点击揭秘 →</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon">✅</span>
+                <strong>别人不了解你的财务状况。</strong> 自己做研究，不要盲从推荐。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon">📊</span>
+                "每天看盘做短线"
+                <span class="myth-tag">点击揭秘 →</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon">✅</span>
+                <strong>90%以上短线交易者亏损。</strong> 买入并持有，时间是你的朋友。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 互动风险确认 -->
+      <div class="risk-acknowledge" id="riskAck">
+        <div class="risk-ack-header" onclick="document.getElementById('riskAck').classList.toggle('expanded')">
+          <strong><span class="risk-icon">⚠️</span> 风险提示（点击展开）</strong>
+          <span style="color:var(--text-muted);font-size:0.8rem;">▼</span>
+        </div>
+        <div class="risk-ack-body">
+          <p>股票投资有风险，本金可能亏损。历史回报不代表未来收益。本文仅为科普教育，不构成任何投资建议。投资前请根据自身风险承受能力独立决策，必要时咨询持牌专业财务顾问。</p>
+          <label class="risk-ack-check" onclick="event.stopPropagation()">
+            <input type="checkbox" id="riskCheckbox" onchange="var ack=document.getElementById('riskAck'); if(this.checked){ack.classList.add('acknowledged')}else{ack.classList.remove('acknowledged')}">
+            我已了解投资风险
+          </label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 常见问题 ===== -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <h2 class="section-title">常见问题 FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>三大指数中哪个最重要？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>专业投资者普遍认为<strong>标普500最重要</strong>，因为它覆盖面广（500家公司占美股总市值约80%）、行业均衡（11个行业全覆盖）、计算方式科学（市值加权）。纳斯达克偏向科技行业，道琼斯只有30只股票且用价格加权，代表性都不如标普500。全球绝大多数机构投资者（养老金、共同基金、保险资金）都把标普500作为业绩比较基准。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>三个指数之间会相互影响吗？哪一个波动最大？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>会的，而且高度关联。因为苹果、微软等巨头同时存在于三个指数中，它们的涨跌会同时影响三大指数。市场情绪也会导致同涨同跌——但<strong>幅度差别很大</strong>。纳斯达克年化波动率约20%，暴涨暴跌最剧烈；标普500约15%，温和居中；道琼斯约13%，最平稳。这就是为什么不同风险承受能力的人应该选择不同的指数。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>为什么道琼斯指数数字那么大（几万点）而标普500只有几千点？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>因为道琼斯是<strong>价格加权</strong>的——它把30只股票的股价加起来除以一个调整系数（目前约0.15左右，会随股票分拆调整）。经过130年的通货膨胀和股价上涨，道指自然从几十点涨到了几万点。而标普500的基准值是10（以1941-1943年为基准期设为10），反映的是<strong>相对倍数增长</strong>——标普500从10涨到5,000，意味着增长了500倍，这才是真正有意义的数字。对比两个指数的绝对数值毫无意义，就像比较人民币和日元的数字大小一样。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>我应该买哪个指数对应的ETF？为什么不能三个都买？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>完全可以三个都买，而且很多成熟投资者就是这样做资产配置的。</strong>推荐的分配思路：<strong>核心 + 增长 + 防御</strong>。例如：标普500占60%（核心底仓，稳如磐石）、纳斯达克100（QQQ）占30%（增长引擎，博取超额收益）、道琼斯（DIA）占10%（防御缓冲，扛跌神器）。如果你只想买一个：无论什么年龄和风险偏好，<strong>标普500 ETF（VOO或SPY）</strong>都是最稳妥的全天候选择。关键是坚持长期定投，不要因为短期波动而卖出。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>美股交易时间是什么时候？我需要在半夜起来操作吗？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>美股正常交易时间为美国东部时间周一至周五 9:30-16:00。<strong>北京时间：夏令时（3月中-11月初）晚上21:30-次日4:00，冬令时晚上22:30-次日5:00。</strong>但<strong>不需要半夜操作</strong>——你可以提前设置好限价单或止损单，券商会在你设定的价格自动触发交易。如果你是定投策略，直接设置自动买入即可，根本不用看盘。这正是长期定投的魅力：你只需要每月确认一次，其他时间该干嘛干嘛。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>投资美股最低需要多少资金？我只有几千块能开始吗？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>完全可以，甚至$1就能开始。</strong>现在几乎所有主流券商都支持零碎股交易（Fractional Shares）。VOO目前每股约$550，你可以买0.1股（约$55），甚至0.01股（约$5.5）。建议从<strong>每月定投$200-$500</strong>（约1,400-3,600人民币）起步，关键是<strong>持续和纪律</strong>。假设你25岁开始每月定投$300，按标普500近70年平均年化回报约10%计算，65岁退休时将拥有约<strong>$190万</strong>（约1,380万人民币）。这就是复利的力量——越早开始越好。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>VOO和SPY有什么区别？我该选哪个？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>两者都追踪标普500指数，持有完全相同的500只股票，但有几个关键区别：<strong>VOO费用比率更低</strong>（0.03% vs SPY 0.09%），如果你长期持有10年以上，VOO更划算。<strong>SPY流动性更高</strong>（日均交易量数千万股），更适合频繁交易者（但你做的是长期定投，不需要极高流动性）。<strong>结论：长期定投选VOO；做波段交易选SPY。</strong>IVV和VOO几乎一样（费用0.03%），两者任选其一即可。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>投资美股需要交税吗？怎么交？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>非美国居民（包括中国大陆居民）投资美股，<strong>不需要向美国缴纳资本利得税</strong>（买卖股票赚的差价）。但<strong>股息需要缴纳10%的预扣税</strong>（由券商自动扣除，无需自己操作），这是中美税收协定规定的优惠税率。你收到的股息已经是税后金额。至于是否需要在本国（中国）报税，取决于你的税务居民身份和当地法规——建议咨询专业税务顾问。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>现在美股已经涨了这么多，现在入场会不会太高了？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>这是新手最常见的心理障碍——"等回调再买"。历史数据告诉我们一个铁律：<strong>市场大部分时间都在创新高</strong>。如果你在1985年觉得标普500"已经涨了很多"而等待回调，你将错过之后40年的巨大涨幅（从约200点到5,000+）。关键不是"现在贵不贵"，而是<strong>你的持有时间有多长</strong>。如果你的投资周期是10年+，任何时间入场都是好时机。如果你担心买在高点，可以<strong>分批定投</strong>：把准备投入的资金分成6-12份，每月投入一份，这样无论市场涨跌都能平滑成本。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>股息是什么？怎么用它赚钱？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>股息是公司把利润的一部分分给股东的钱，通常按季度发放（每3个月一次）。标普500的股息率约1.3-1.5%，即你持有$10,000的标普500 ETF，每年大约能收到$130-150的股息。金额虽小，但<strong>复利再投资的力量惊人</strong>：把收到的股息自动再买入更多ETF，长期下来，股息再投资贡献了标普500历史总回报的约40%。几乎所有券商都支持自动股息再投资计划（DRIP），开户时记得开启这个功能。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>本网站仅供教育目的，不构成任何投资建议。数据仅供参考。</p>
+      <p>投资有风险，入市需谨慎。Past performance does not guarantee future results.</p>
+      <p class="footer-copy">&copy; 2026 US Stock Guide for Beginners</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  /* ================================================================
+     learn.html — 悬停展开指数详情
+     ================================================================ */
+
+  const detailHTML = {
+    nasdaq: `
+      <div class="detail-layout">
+        <div class="detail-text">
+          <h3>一句话理解</h3>
+          <p>纳斯达克 ≈ <strong>美国科技股的集合</strong>。如果你看好人工智能、芯片、软件、互联网的未来，纳斯达克就是你的参考指标。它代表着美国科技创新的最前沿。</p>
+          <h3>它是什么？</h3>
+          <p>纳斯达克（NASDAQ）既是<strong>一家证券交易所</strong>，也是一个<strong>股票指数</strong>。作为交易所，它是全球第一个电子化股票交易平台，成立于1971年；作为指数，它包含了在纳斯达克上市的所有公司——超过3,000只股票，范围极其广泛。</p>
+          <h3>为什么科技股多？</h3>
+          <p>纳斯达克从诞生之初就定位为"面向未来的交易所"，上市门槛相对较低，对初创科技公司特别友好。苹果、微软、亚马逊、谷歌、英伟达、Meta等科技巨头都在这里挂牌，导致科技行业占指数权重的<strong>50%以上</strong>。</p>
+          <h3>知名成分股</h3>
+          <ul class="company-list">
+            <li><span class="company-icon">🍎</span> <strong>苹果</strong> Apple（AAPL）— 全球市值最高公司之一，约$3万亿+</li>
+            <li><span class="company-icon">🪟</span> <strong>微软</strong> Microsoft（MSFT）— 软件与云计算巨头，AI深度布局</li>
+            <li><span class="company-icon">🎮</span> <strong>英伟达</strong> NVIDIA（NVDA）— AI芯片绝对领导者</li>
+            <li><span class="company-icon">📦</span> <strong>亚马逊</strong> Amazon（AMZN）— 电商 + AWS云计算双引擎</li>
+            <li><span class="company-icon">🔍</span> <strong>谷歌</strong> Alphabet（GOOGL）— 搜索引擎霸主 + AI前沿探索</li>
+            <li><span class="company-icon">📱</span> <strong>Meta</strong> 元宇宙 Meta（META）— 社交帝国 + 元宇宙先锋</li>
+            <li><span class="company-icon">🚗</span> <strong>特斯拉</strong> Tesla（TSLA）— 电动车革命者 + 清洁能源</li>
+          </ul>
+          <div class="deep-box">
+            <strong>纳斯达克 vs 纳斯达克100 有什么区别？</strong>
+            <p><strong>纳斯达克综合指数</strong> ≈ 全部3,000+股票；而<strong>纳斯达克100</strong>是从中精选前100大非金融公司，是更纯粹的"大型科技股指数"。著名的QQQ ETF就是追踪纳斯达克100，想买科技巨头，买QQQ就够了。</p>
+          </div>
+        </div>
+        <div class="detail-visual">
+          <div class="stat-box"><div class="stat-number">3,000+</div><div class="stat-label">成分股数量</div></div>
+          <div class="stat-box"><div class="stat-number">1971</div><div class="stat-label">成立年份（55年）</div></div>
+          <div class="stat-box"><div class="stat-number">~50%</div><div class="stat-label">科技行业占比</div></div>
+          <div class="stat-box"><div class="stat-number">全球第一</div><div class="stat-label">电子化交易所</div></div>
+          <div class="stat-box"><div class="stat-number">~15%+</div><div class="stat-label">近10年年化回报</div></div>
+          <div class="stat-box"><div class="stat-number">QQQ</div><div class="stat-label">最热门的追踪ETF</div></div>
+        </div>
+      </div>`,
+
+    sp500: `
+      <div class="detail-layout">
+        <div class="detail-text">
+          <h3>一句话理解</h3>
+          <p>标普500 ≈ <strong>美国经济的"成绩单"</strong>。选500家最有代表性的美国大公司，打包算出一个指数。它是全球基金经理的"及格线"——如果经理人跑不赢标普500，那还不如让客户直接买指数基金。巴菲特也曾说过："对于普通人来说，最好的投资就是定投标普500指数基金。"</p>
+          <h3>它是什么？</h3>
+          <p>标准普尔500指数（S&P 500）由标准普尔公司编制，精选<strong>500家美国大型上市公司</strong>，覆盖11个行业。它采用<strong>市值加权</strong>——公司市值越大，对指数的影响越大。例如苹果市值约$3万亿，在指数中的权重可能是一家小型成分股的100倍以上。</p>
+          <h3>为什么它被称为"最重要的指数"？</h3>
+          <p>专业投资者（基金经理、养老金、对冲基金、各国央行）都以标普500为<strong>业绩比较基准</strong>。500家公司占美国股市总市值约<strong>80%</strong>，行业均衡，是从任何一个角度看都最全面、最合理的美股代表。</p>
+          <h3>入选标普500有多难？</h3>
+          <p>不是随便500家公司都能进——市值至少<strong>180亿美元</strong>、最近四个季度合计净利润必须为正、流动性充足、总部在美国。进入标普500本身就是一种"认证"，意味着这家公司已是行业翘楚。</p>
+          <h3>行业分布（大致）</h3>
+          <div class="sector-bars">
+            <div class="sector-bar"><span class="sector-name">信息技术</span><span class="sector-fill" style="width:29%">29%</span></div>
+            <div class="sector-bar"><span class="sector-name">金融</span><span class="sector-fill" style="width:13%">13%</span></div>
+            <div class="sector-bar"><span class="sector-name">医疗保健</span><span class="sector-fill" style="width:12%">12%</span></div>
+            <div class="sector-bar"><span class="sector-name">消费</span><span class="sector-fill" style="width:11%">11%</span></div>
+            <div class="sector-bar"><span class="sector-name">通信</span><span class="sector-fill" style="width:9%">9%</span></div>
+            <div class="sector-bar"><span class="sector-name">工业</span><span class="sector-fill" style="width:8%">8%</span></div>
+            <div class="sector-bar"><span class="sector-name">其他</span><span class="sector-fill" style="width:18%">18%</span></div>
+          </div>
+        </div>
+        <div class="detail-visual">
+          <div class="stat-box"><div class="stat-number">500</div><div class="stat-label">精选成分股</div></div>
+          <div class="stat-box"><div class="stat-number">1957</div><div class="stat-label">成立年份（69年）</div></div>
+          <div class="stat-box"><div class="stat-number">~80%</div><div class="stat-label">覆盖美股总市值</div></div>
+          <div class="stat-box"><div class="stat-number">11个</div><div class="stat-label">覆盖行业数量</div></div>
+          <div class="stat-box"><div class="stat-number">10-13%</div><div class="stat-label">近10年年化回报</div></div>
+          <div class="stat-box"><div class="stat-number">SPY/VOO</div><div class="stat-label">最热门的追踪ETF</div></div>
+        </div>
+      </div>`,
+
+    dowjones: `
+      <div class="detail-layout">
+        <div class="detail-text">
+          <h3>一句话理解</h3>
+          <p>道琼斯 ≈ <strong>美国最牛30家公司</strong>。它是新闻里常说的"美股涨了/跌了多少点"中的那个"美股"。当你在电视上听到"道指突破40,000点"时，说的就是它——世界上最古老、曝光率最高的股票指数。</p>
+          <h3>它是什么？</h3>
+          <p>道琼斯工业平均指数（DJIA，简称"道指"）由查尔斯·道和爱德华·琼斯于<strong>1896年</strong>创立。最初只有12家工业公司（钢铁、铁路、石油），如今扩展到30家各行业龙头。130年了，名字中的"工业"一词作为历史传承保留至今，虽然成分股早已不再只是工业公司。</p>
+          <h3>独特的价格加权——不懂这个就看不懂道指</h3>
+          <p>这是道指与其他两大指数最大的不同：<strong>纳斯达克和标普500用的是"市值加权"</strong>——公司市值越大影响力越大；<strong>道琼斯用的是"价格加权"</strong>——<strong>股价越高的公司对指数影响越大</strong>。例如联合健康（UNH）股价约$500，英特尔（INTC）股价约$30，在道指中联合健康的影响力是英特尔的<strong>16倍</strong>——即使英特尔市值更大。这就是为什么很多人批评价格加权"不合理"，但道指从1896年就这样算，改也改不了。</p>
+          <h3>当前30只成分股</h3>
+          <div class="dow-companies">
+            <span>🍎 苹果 AAPL</span><span>🪟 微软 MSFT</span><span>🏦 高盛 GS</span>
+            <span>🏛️ 摩根大通 JPM</span><span>✈️ 波音 BA</span><span>🏥 联合健康 UNH</span>
+            <span>🔧 家得宝 HD</span><span>🍔 麦当劳 MCD</span><span>💳 维萨 V</span>
+            <span>💊 强生 JNJ</span><span>🧴 宝洁 PG</span><span>🥤 可口可乐 KO</span>
+            <span>🐭 迪士尼 DIS</span><span>👟 耐克 NKE</span><span>🛒 沃尔玛 WMT</span>
+            <span>⛽ 雪佛龙 CVX</span><span>💳 美国运通 AXP</span><span>💻 IBM</span>
+            <span>🚜 卡特彼勒 CAT</span><span>📦 亚马逊 AMZN</span><span>☁️ 赛富时 CRM</span>
+            <span>🧬 安进 AMGN</span><span>⚙️ 霍尼韦尔 HON</span><span>🔄 3M MMM</span>
+            <span>💾 英特尔 INTC</span><span>🌐 思科 CSCO</span><span>🧪 陶氏化学 DOW</span>
+            <span>🛡️ 旅行者 TRV</span><span>💊 默克 MRK</span><span>📡 威瑞森 VZ</span>
+          </div>
+          <p class="note-text">* 成分股会定期调整，请注意这些股票的股价差异很大——从$30（英特尔）到$500+（联合健康），这就是"价格加权"在起作用。</p>
+        </div>
+        <div class="detail-visual">
+          <div class="stat-box"><div class="stat-number">30</div><div class="stat-label">精英成分股</div></div>
+          <div class="stat-box"><div class="stat-number">1896</div><div class="stat-label">成立年份（130年）</div></div>
+          <div class="stat-box"><div class="stat-number">价格加权</div><div class="stat-label">独特计算方式</div></div>
+          <div class="stat-box"><div class="stat-number">12→30</div><div class="stat-label">从工业到多元的进化</div></div>
+          <div class="stat-box"><div class="stat-number">7-9%</div><div class="stat-label">近10年年化回报</div></div>
+          <div class="stat-box"><div class="stat-number">DIA</div><div class="stat-label">追踪ETF</div></div>
+        </div>
+      </div>`
+  };
+
+  const cards = document.querySelectorAll('.info-card[data-index]');
+  const hoverDetail = document.getElementById('hoverDetail');
+  const hoverDetailInner = document.getElementById('hoverDetailInner');
+  let activeIndex = null;
+  let hideTimer = null;
+
+  function showDetail(index) {
+    if (activeIndex === index) return;
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    activeIndex = index;
+    hoverDetailInner.innerHTML = detailHTML[index];
+    hoverDetail.classList.add('active');
+  }
+
+  function hideDetail() {
+    hideTimer = setTimeout(() => {
+      hoverDetail.classList.remove('active');
+      activeIndex = null;
+    }, 200);
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const index = card.getAttribute('data-index');
+      showDetail(index);
+    });
+    card.addEventListener('mouseleave', () => {
+      hideDetail();
+    });
+  });
+
+  hoverDetail.addEventListener('mouseenter', () => {
+    if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+  });
+
+  hoverDetail.addEventListener('mouseleave', () => {
+    hideDetail();
+  });
+  </script>
+
+  <!-- ===== 对比区：雷达图 + 柱状图动画 + hover 联动 ===== -->
+  <script>
+  (function() {
+    let radarChart = null;
+    const radarIndexMap = { nasdaq: '纳斯达克', sp500: '标普500', dowjones: '道琼斯' };
+    const radarBaseData = [
+      { value: [95, 35, 20, 80, 30, 40], name: '纳斯达克', color: '#10b981', areaColor: 'rgba(16,185,129,0.12)' },
+      { value: [75, 75, 95, 90, 70, 95], name: '标普500', color: '#3b82f6', areaColor: 'rgba(59,130,246,0.12)' },
+      { value: [55, 90, 50, 95, 100, 70], name: '道琼斯', color: '#8b5cf6', areaColor: 'rgba(139,92,246,0.12)' }
+    ];
+
+    function buildRadarSeries(highlightName) {
+      return radarBaseData.map(d => {
+        var dimmed = highlightName && d.name !== highlightName;
+        return {
+          value: d.value,
+          name: d.name,
+          lineStyle: { color: d.color, width: dimmed ? 0.5 : 2, opacity: dimmed ? 0.06 : 1 },
+          areaStyle: { color: dimmed ? 'transparent' : d.areaColor },
+          itemStyle: { color: d.color, opacity: dimmed ? 0 : 1 },
+          symbol: 'circle',
+          symbolSize: dimmed ? 2 : 6
+        };
+      });
+    }
+
+    function setBarsHighlight(index) {
+      document.querySelectorAll('.compare-bar-row[data-bar-index]').forEach(function(row) {
+        var rowIdx = row.getAttribute('data-bar-index');
+        row.classList.remove('dimmed', 'highlight');
+        if (index && rowIdx !== index) {
+          row.classList.add('dimmed');
+        } else if (index && rowIdx === index) {
+          row.classList.add('highlight');
+        }
+      });
+    }
+
+    function clearBarsHighlight() {
+      document.querySelectorAll('.compare-bar-row[data-bar-index]').forEach(function(row) {
+        row.classList.remove('dimmed', 'highlight');
+      });
+    }
+
+    // ---- 雷达图 ----
+    var radarDom = document.getElementById('compareRadar');
+    if (radarDom && typeof echarts !== 'undefined') {
+      radarChart = echarts.init(radarDom);
+
+      radarChart.setOption({
+        legend: {
+          data: ['纳斯达克', '标普500', '道琼斯'],
+          bottom: 10,
+          textStyle: { color: '#8b8fa3', fontSize: 12 },
+          itemGap: 24
+        },
+        radar: {
+          center: ['50%', '48%'],
+          radius: '62%',
+          indicator: [
+            { name: '回报潜力', max: 100 },
+            { name: '稳定性', max: 100 },
+            { name: '行业分散', max: 100 },
+            { name: '知名度', max: 100 },
+            { name: '历史底蕴', max: 100 },
+            { name: '新手友好', max: 100 }
+          ],
+          shape: 'polygon',
+          splitNumber: 4,
+          axisName: { color: '#8b8fa3' },
+          splitLine: { lineStyle: { color: '#282c35' } },
+          splitArea: { areaStyle: { color: ['rgba(59,130,246,0.02)', 'rgba(59,130,246,0.02)', 'rgba(59,130,246,0.02)', 'rgba(59,130,246,0.02)'] } },
+          axisLine: { lineStyle: { color: '#282c35' } }
+        },
+        series: [{ type: 'radar', data: buildRadarSeries(null) }]
+      });
+      window.addEventListener('resize', function() { radarChart.resize(); });
+    }
+
+    // ---- 柱状图入场动画 ----
+    var barFills = document.querySelectorAll('.compare-bar-fill');
+    if (barFills.length > 0 && 'IntersectionObserver' in window) {
+      var barObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('animated'); }
+        });
+      }, { threshold: 0.3 });
+      barFills.forEach(function(bar) { barObserver.observe(bar); });
+    } else {
+      barFills.forEach(function(bar) { bar.classList.add('animated'); });
+    }
+
+    // ---- Hover 联动：亮点卡片 → 雷达图 + 柱状图 ----
+    var highlightCards = document.querySelectorAll('.compare-highlight[data-highlight-index]');
+    highlightCards.forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        var idx = card.getAttribute('data-highlight-index');
+        var radarName = radarIndexMap[idx];
+        if (radarChart && radarName) {
+          radarChart.setOption({ series: [{ data: buildRadarSeries(radarName) }] });
+        }
+        setBarsHighlight(idx);
+      });
+      card.addEventListener('mouseleave', function() {
+        if (radarChart) {
+          radarChart.setOption({ series: [{ data: buildRadarSeries(null) }] });
+        }
+        clearBarsHighlight();
+      });
+    });
+  })();
+  </script>
+
+  <!-- ===== 新手入门区：交互步骤 + ETF问答 + 复利计算器 ===== -->
+  <script>
+  (function() {
+    // ---- Step 展开/收起 ----
+    var istepHeaders = document.querySelectorAll('.istep-header');
+    istepHeaders.forEach(function(header) {
+      header.addEventListener('click', function() {
+        var step = this.parentElement;
+        var stepNum = parseInt(this.getAttribute('data-step'));
+        step.classList.toggle('open');
+        updateStepper();
+      });
+    });
+
+    // ---- Stepper 点击滚动 ----
+    var stepperDots = document.querySelectorAll('.stepper-dot');
+    stepperDots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var targetStep = parseInt(this.getAttribute('data-step'));
+        var allSteps = document.querySelectorAll('.istep');
+        allSteps.forEach(function(step, i) {
+          if (i === targetStep - 1) {
+            step.classList.add('open');
+            step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+        updateStepper();
+      });
+    });
+
+    // ---- Stepper 状态同步 ----
+    function updateStepper() {
+      var allSteps = document.querySelectorAll('.istep');
+      var highestOpen = 0;
+      allSteps.forEach(function(step, i) {
+        if (step.classList.contains('open')) highestOpen = i + 1;
+      });
+      stepperDots.forEach(function(dot) {
+        var n = parseInt(dot.getAttribute('data-step'));
+        dot.classList.remove('active', 'done');
+        if (n === highestOpen) dot.classList.add('active');
+        else if (n < highestOpen) dot.classList.add('done');
+      });
+      document.querySelectorAll('.stepper-line').forEach(function(line, i) {
+        if (i + 1 < highestOpen) line.classList.add('done');
+        else line.classList.remove('done');
+      });
+    }
+
+    // ---- ETF 推荐问答 ----
+    var quizOpts = document.querySelectorAll('.etf-quiz-opt');
+    var quizSelections = { risk: null, horizon: null, tech: null };
+    quizOpts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        var qGroup = this.parentElement;
+        var qKey = qGroup.getAttribute('data-q');
+        qGroup.querySelectorAll('.etf-quiz-opt').forEach(function(o) { o.classList.remove('selected'); });
+        this.classList.add('selected');
+        quizSelections[qKey] = this.getAttribute('data-val');
+        checkQuizComplete();
+      });
+    });
+
+    function checkQuizComplete() {
+      if (quizSelections.risk && quizSelections.horizon && quizSelections.tech) {
+        var result = getETFRecommendation();
+        var resultDiv = document.getElementById('etfQuizResult');
+        document.getElementById('etfQuizResultETF').textContent = result.etf;
+        document.getElementById('etfQuizResultReason').textContent = result.reason;
+        resultDiv.classList.add('show');
+      }
+    }
+
+    function getETFRecommendation() {
+      var r = quizSelections;
+      // 综合判断
+      if (r.risk === 'high' && r.tech === 'yes' && r.horizon === 'long') {
+        return { etf: '推荐：QQQ（70%）+ VOO（30%）', reason: '你风险承受强、看好科技且长期投资，QQQ高回报潜力匹配你的需求。搭配VOO作为稳定底仓，攻守兼备。' };
+      } else if (r.risk === 'low' || r.horizon === 'short') {
+        return { etf: '推荐：VOO / SPY', reason: '你需要低波动和稳健回报。VOO追踪标普500，覆盖11个行业，是最安全的全天候选择。巴菲特也推荐它。' };
+      } else if (r.tech === 'yes' && r.horizon !== 'short') {
+        return { etf: '推荐：VOO（60%）+ QQQ（40%）', reason: '你相信科技但不想冒险过多。核心VOO + 增长QQQ的经典组合，兼顾稳健与成长。' };
+      } else if (r.tech === 'no') {
+        return { etf: '推荐：DIA 或 VT', reason: '你不偏爱科技，偏好传统行业或全球分散。DIA追踪30家蓝筹，VT覆盖全球，都是稳妥之选。' };
+      } else {
+        return { etf: '推荐：VOO / SPY', reason: '最适合新手的万金油选择：费用低、覆盖面广、历史悠久。先从这里开始，以后可以再调整。' };
+      }
+    }
+
+    // ---- 复利计算器 ----
+    var calcMonthly = document.getElementById('calcMonthly');
+    var calcYears = document.getElementById('calcYears');
+    var calcReturn = document.getElementById('calcReturn');
+    var calcChartDom = document.getElementById('calcChart');
+    var calcChart = null;
+
+    if (calcChartDom && typeof echarts !== 'undefined') {
+      calcChart = echarts.init(calcChartDom);
+    }
+
+    function updateCalculator() {
+      var monthly = parseInt(calcMonthly.value);
+      var years = parseInt(calcYears.value);
+      var annualRate = parseFloat(calcReturn.value) / 100;
+      var monthlyRate = annualRate / 12;
+      var months = years * 12;
+
+      // 复利公式：FV = P * ((1+r)^n - 1) / r
+      var futureValue = 0;
+      if (monthlyRate > 0) {
+        futureValue = monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+      } else {
+        futureValue = monthly * months;
+      }
+      var invested = monthly * months;
+      var earnings = futureValue - invested;
+
+      // 更新显示
+      document.getElementById('calcMonthlyVal').textContent = '$' + monthly.toLocaleString();
+      document.getElementById('calcYearsVal').textContent = years + ' 年';
+      document.getElementById('calcReturnVal').textContent = annualRate * 100 + '%';
+      document.getElementById('calcInvested').textContent = '$' + Math.round(invested).toLocaleString();
+      document.getElementById('calcEarnings').textContent = '$' + Math.round(earnings).toLocaleString();
+      document.getElementById('calcTotal').textContent = '$' + Math.round(futureValue).toLocaleString();
+
+      // 更新图表
+      updateChart(monthly, months, monthlyRate, invested);
+    }
+
+    function updateChart(monthly, months, monthlyRate, invested) {
+      if (!calcChart) return;
+      var labels = [];
+      var investedData = [];
+      var valueData = [];
+      var step = Math.max(1, Math.floor(months / 20));
+      for (var i = step; i <= months; i += step) {
+        labels.push(Math.round(i / 12) + '年');
+        investedData.push(monthly * i);
+        var fv = 0;
+        if (monthlyRate > 0) {
+          fv = monthly * ((Math.pow(1 + monthlyRate, i) - 1) / monthlyRate);
+        } else {
+          fv = monthly * i;
+        }
+        valueData.push(Math.round(fv));
+      }
+      calcChart.setOption({
+        grid: { top: 20, right: 20, bottom: 30, left: 70 },
+        xAxis: { type: 'category', data: labels, axisLabel: { color: '#8b8fa3', fontSize: 10 }, axisLine: { lineStyle: { color: '#282c35' } } },
+        yAxis: { type: 'value', axisLabel: { color: '#8b8fa3', fontSize: 10, formatter: function(v) { return (v / 1000).toFixed(0) + 'k'; } }, splitLine: { lineStyle: { color: '#282c35' } } },
+        series: [
+          { name: '投入本金', type: 'bar', data: investedData, itemStyle: { color: 'rgba(59,130,246,0.5)', borderRadius: [4,4,0,0] }, barGap: '20%', emphasis: { itemStyle: { color: '#3b82f6' } } },
+          { name: '复利终值', type: 'bar', data: valueData, itemStyle: { color: 'rgba(16,185,129,0.6)', borderRadius: [4,4,0,0] }, emphasis: { itemStyle: { color: '#10b981' } } }
+        ],
+        legend: { data: ['投入本金', '复利终值'], bottom: 0, textStyle: { color: '#8b8fa3', fontSize: 10 } },
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } }
+      });
+    }
+
+    calcMonthly.addEventListener('input', updateCalculator);
+    calcYears.addEventListener('input', updateCalculator);
+    calcReturn.addEventListener('input', updateCalculator);
+
+    // 初始计算
+    updateCalculator();
+    updateStepper();
+  })();
+  </script>
+</body>
+</html>
