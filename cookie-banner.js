@@ -12,7 +12,7 @@
     '<div class="cookie-banner-container">' +
       '<div class="cookie-banner-text">' +
         '<strong>本网站使用 Cookie</strong>' +
-        '<p>我们使用 Cookie 和类似技术来改善您的浏览体验、分析网站流量以及通过 Google 和 Microsoft 展示个性化广告。点击"全部接受"即表示您同意我们使用所有 Cookie。您可以随时通过隐私政策页面更改偏好。</p>' +
+        '<p>我们使用 Cookie 和类似技术来改善您的浏览体验、分析网站流量以及通过 Google AdSense 和 PropellerAds 展示个性化广告。点击"全部接受"即表示您同意我们使用所有 Cookie。您可以随时通过隐私政策页面更改偏好。</p>' +
         '<a href="privacy.html" class="cookie-link">隐私政策</a>' +
         '<span style="margin:0 8px;color:var(--text-muted)">|</span>' +
         '<a href="terms.html" class="cookie-link">服务条款</a>' +
