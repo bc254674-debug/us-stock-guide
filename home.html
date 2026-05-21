@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美国股市三大指数 — 新手入门指南</title>
+  <meta name="description" content="从零开始学习美股投资。纳斯达克、标普500、道琼斯三大指数详解，K线图教学，新手投资指南。免费股票入门教程。">
+  <meta name="keywords" content="美股,股票入门,纳斯达克,标普500,道琼斯,K线图,投资教程,ETF,新手投资">
+  <meta property="og:title" content="美国股市三大指数 — 新手入门指南">
+  <meta property="og:description" content="从零开始学习美股投资，看懂K线图，掌握三大指数。">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="JgHGYCvbNSsVMTZk3H5U0Vl1z8DToAmQC4fjaF1znJ8" />
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google AdSense — 替换 ca-pub-2596520613460726 为你的发布商ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596520613460726" crossorigin="anonymous"></script>
+  <!-- PropellerAds Native Banner -->
+  <script async="async" data-cfasync="false" src="https://pl29511778.effectivecpmnetwork.com/4834d9760d1434a067c4bfadfdc6c3fa/invoke.js"></script>
+  </head>
+<body>
+
+  <!-- ===== 导航栏 ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">US Stock Guide</a>
+      <ul class="nav-links">
+        <li><a href="invest.html">💰 投资小学堂</a></li>
+        <li><a href="#" id="btnBeginnerNav">📖 新手入门</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    </div>
+  </nav>
+
+  <!-- ===== 英雄区 ===== -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <div class="market-status closed" id="marketStatus"><span class="status-dot"></span> <span id="marketStatusText">检测中...</span></div>
+      <span class="hero-badge">📈 美股实时行情</span>
+      <h1 class="hero-title">美国股市三大指数</h1>
+      <p class="hero-subtitle">纳斯达克 · 标普500 · 道琼斯</p>
+      <p class="hero-desc">点击下方指数卡片查看<strong>K线图与详细数据</strong>，或学习三大指数的基础知识与投资指南</p>
+      <div class="hero-btns">
+        <a href="learn.html" class="hero-btn">开始了解 →</a>
+      </div>
+    </div>
+    <div class="hero-tickers" id="tickers">
+      <a href="dashboard.html?index=nasdaq" class="ticker-card" data-index="nasdaq" id="ticker-nasdaq">
+        <div class="ticker-name">纳斯达克综合指数</div>
+        <div class="ticker-value" id="nasdaqValue">--</div>
+        <div class="ticker-change" id="nasdaqChange">加载中...</div>
+        <div class="ticker-summary">
+          <span class="ticker-tag">📡 全球首个电子化交易所</span>
+          <span class="ticker-tag">💻 科技股权重 50%+</span>
+          <span class="ticker-tag">🏢 成分股 3,000+</span>
+        </div>
+        <div class="ticker-sparkline" id="sparkNasdaq"></div>
+      </a>
+      <a href="dashboard.html?index=sp500" class="ticker-card" data-index="sp500" id="ticker-sp500">
+        <div class="ticker-name">标普500</div>
+        <div class="ticker-value" id="sp500Value">--</div>
+        <div class="ticker-change" id="sp500Change">加载中...</div>
+        <div class="ticker-summary">
+          <span class="ticker-tag">🇺🇸 美国经济晴雨表</span>
+          <span class="ticker-tag">🎯 巴菲特首选推荐</span>
+          <span class="ticker-tag">🏛️ 覆盖 11 大行业</span>
+        </div>
+        <div class="ticker-sparkline" id="sparkSp500"></div>
+      </a>
+      <a href="dashboard.html?index=dowjones" class="ticker-card" data-index="dowjones" id="ticker-dowjones">
+        <div class="ticker-name">道琼斯工业平均</div>
+        <div class="ticker-value" id="dowValue">--</div>
+        <div class="ticker-change" id="dowChange">加载中...</div>
+        <div class="ticker-summary">
+          <span class="ticker-tag">🏅 百年指数（1896）</span>
+          <span class="ticker-tag">👑 30 家蓝筹巨头</span>
+          <span class="ticker-tag">⚖️ 独特的价格加权</span>
+        </div>
+        <div class="ticker-sparkline" id="sparkDow"></div>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== 投资性格快速测试 ===== -->
+  <section class="section" style="padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title">你的投资性格是什么？</h2>
+      <p class="section-intro">3个问题，30秒，找到最适合你的美股指数</p>
+      <div class="personality-quiz" id="personalityQuiz">
+        <div class="pq-question">
+          <span class="pq-label">1. 看到账户跌了多少你会睡不着觉？</span>
+          <div class="pq-opts" data-pq="risk">
+            <span class="pq-opt" data-val="high">📉 跌30%也不慌</span>
+            <span class="pq-opt" data-val="mid">😐 跌15%还行</span>
+            <span class="pq-opt" data-val="low">😰 跌5%就难受</span>
+          </div>
+        </div>
+        <div class="pq-question">
+          <span class="pq-label">2. 这笔钱你打算投多久？</span>
+          <div class="pq-opts" data-pq="horizon">
+            <span class="pq-opt" data-val="long">📅 10年以上</span>
+            <span class="pq-opt" data-val="mid">📅 3-10年</span>
+            <span class="pq-opt" data-val="short">📅 不到3年</span>
+          </div>
+        </div>
+        <div class="pq-question">
+          <span class="pq-label">3. 你对科技行业的看法？</span>
+          <div class="pq-opts" data-pq="tech">
+            <span class="pq-opt" data-val="bullish">🚀 AI和科技改变世界</span>
+            <span class="pq-opt" data-val="neutral">🤷 没有特别的看法</span>
+            <span class="pq-opt" data-val="bearish">🏭 更喜欢传统稳健行业</span>
+          </div>
+        </div>
+        <div class="pq-result" id="pqResult">
+          <div class="pq-result-type" id="pqResultType"></div>
+          <div class="pq-result-desc" id="pqResultDesc"></div>
+          <div class="pq-result-etf" id="pqResultETF"></div>
+          <button class="pq-reset" id="pqReset">↻ 重新测试</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PropellerAds Native Banner Ad -->
+  <div id="container-4834d9760d1434a067c4bfadfdc6c3fa" style="max-width:1120px;margin:24px auto;padding:0 24px;"></div>
+
+  <!-- ===== 三大指数快速导航 ===== -->
+  <section class="section section-quicknav">
+    <div class="container">
+      <h2 class="section-title">三大指数快速导航</h2>
+      <p class="section-intro">点开任意指数，了解它是什么、为什么重要，以及如何用它开启你的投资之旅</p>
+      <div class="cards-row" id="quickNavRow">
+        <a href="nasdaq.html" class="info-card card-nasdaq">
+          <div class="card-icon">📊</div>
+          <h3>纳斯达克综合指数</h3>
+          <p class="card-one-liner">科技股的大本营 — 拥有苹果、微软、英伟达，堪称<strong>"科技铁三角"</strong></p>
+          <div class="card-badges">
+            <span class="badge badge-tech">高成长高波动</span>
+            <span class="badge badge-tech">适合冒险型</span>
+          </div>
+          <ul>
+            <li>📅 1971 → 2026 (55年历史)</li>
+            <li>🧩 包含全部纳斯达克上市公司</li>
+            <li>📈 近10年年化回报 ≈ 15%+</li>
+            <li>🔥 科技 + 生物科技 + 成长股</li>
+            <li>🎯 适合看好科技未来的你</li>
+          </ul>
+          <span class="card-hint">查看详情 →</span>
+        </a>
+        <a href="sp500.html" class="info-card card-sp500">
+          <div class="card-icon">🏛️</div>
+          <h3>标普500指数</h3>
+          <p class="card-one-liner">全球最受关注的指数 — 基金经理的<strong>"及格线"</strong>，跑不赢它不如买ETF</p>
+          <div class="card-badges">
+            <span class="badge badge-benchmark">业界黄金标准</span>
+            <span class="badge badge-benchmark">新手首选</span>
+          </div>
+          <ul>
+            <li>📅 1957 → 2026 (69年历史)</li>
+            <li>🧩 500家精英公司</li>
+            <li>📈 近10年年化回报 ≈ 10-13%</li>
+            <li>🌐 覆盖美股总市值 80%</li>
+            <li>🎯 最适合定投的指数</li>
+          </ul>
+          <span class="card-hint">查看详情 →</span>
+        </a>
+        <a href="dowjones.html" class="info-card card-dow">
+          <div class="card-icon">🏭</div>
+          <h3>道琼斯工业平均指数</h3>
+          <p class="card-one-liner">最古老的指数 — 新闻里的<strong>"美股涨了多少点"</strong>说的就是它</p>
+          <div class="card-badges">
+            <span class="badge badge-old">百年老字号</span>
+            <span class="badge badge-old">蓝筹风向标</span>
+          </div>
+          <ul>
+            <li>📅 1896 → 2026 (130年历史)</li>
+            <li>🧩 仅30家行业龙头</li>
+            <li>📈 波动较小（蓝筹股更稳）</li>
+            <li>⚖️ 价格加权（独一无二）</li>
+            <li>🎯 适合求稳的保守型投资者</li>
+          </ul>
+          <span class="card-hint">查看详情 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 新手快速入门引导 ===== -->
+  <section class="section" id="beginnerCta">
+    <div class="container">
+      <h2 class="section-title">🚀 美股投资第一步</h2>
+      <p class="section-intro">不用害怕，美股比你想象中容易。跟着这三步，你也能开始</p>
+      <div class="quick-steps">
+        <div class="qstep">
+          <div class="qstep-icon">1️⃣</div>
+          <div class="qstep-body">
+            <h3>选一个券商开户</h3>
+            <p>盈透证券、富途moomoo、老虎证券、嘉信理财等，在线几分钟就搞定。大部分支持中文和银联入金。</p>
+          </div>
+        </div>
+        <div class="qstep">
+          <div class="qstep-icon">2️⃣</div>
+          <div class="qstep-body">
+            <h3>买ETF，不买个股</h3>
+            <p>新手最安全的做法：直接买<strong>标普500 ETF（VOO/SPY）</strong>，一次买下500家公司，分散风险。最低 $1 即可开始。</p>
+          </div>
+        </div>
+        <div class="qstep">
+          <div class="qstep-icon">3️⃣</div>
+          <div class="qstep-body">
+            <h3>定投，别想一夜暴富</h3>
+            <p>每月固定投入几百美元，无论涨跌。长期坚持（10年以上），历史年化回报约 7-10%。<strong>时间是你最好的朋友。</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="beginner-cta-btn">
+        <a href="#" class="hero-btn" id="btnBeginnerCta">查看更多新手教程 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 四大投资策略 ===== -->
+  <section class="section section-alt" style="padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title"> 四大经典投资策略</h2>
+      <p class="section-intro">了解最常见的投资策略，找到属于你的那一种。策略没有绝对的好坏，<strong>适合你的才是最好的</strong>。</p>
+      <div class="cards-row" style="margin-bottom:32px;">
+        <div class="info-card">
+          <div class="card-icon"></div>
+          <h3>定投策略<br><small style="color:var(--text-muted);font-size:0.8rem;">Dollar-Cost Averaging</small></h3>
+          <p>每月固定金额买入，无论市场涨跌。这是<strong>最适合新手</strong>的策略，省心省力，用时间换收益。</p>
+          <ul>
+            <li>每月/每季度固定投入</li>
+            <li>市场跌时买更多份额</li>
+            <li>市场涨时享受收益</li>
+            <li>不需要择时判断</li>
+            <li>长期坚持，胜率极高</li>
+          </ul>
+          <div class="card-badges" style="margin-top:10px;">
+            <span class="badge badge-benchmark">新手首选</span>
+            <span class="badge badge-benchmark">省心省力</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon"></div>
+          <h3>指数投资<br><small style="color:var(--text-muted);font-size:0.8rem;">Index Investing</small></h3>
+          <p>买下整个市场而非挑选个股。<strong>巴菲特力荐</strong>的被动投资策略，费用低、风险分散、长期跑赢绝大多数主动基金。</p>
+          <ul>
+            <li>买入标普500 ETF (VOO/SPY)</li>
+            <li>年费仅 0.03%-0.09%</li>
+            <li>自动分散到500家公司</li>
+            <li>历史年化回报约 10%</li>
+            <li>无需追踪个股消息</li>
+          </ul>
+          <div class="card-badges" style="margin-top:10px;">
+            <span class="badge badge-benchmark">巴菲特推荐</span>
+            <span class="badge badge-benchmark">低费率</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="card-icon"></div>
+          <h3>价值投资<br><small style="color:var(--text-muted);font-size:0.8rem;">Value Investing</small></h3>
+          <p>寻找被市场<strong>低估的优质公司</strong>，耐心持有等待价格回归价值。代表人物：巴菲特、格雷厄姆、彼得·林奇。</p>
+          <ul>
+            <li>寻找低PE/低PB的优质公司</li>
+            <li>深度研究公司基本面</li>
+            <li>安全边际为核心原则</li>
+            <li>持有周期长（3-10年+）</li>
+            <li>需要较强的分析能力</li>
+          </ul>
+          <div class="card-badges" style="margin-top:10px;">
+            <span class="badge badge-old">经典永不过时</span>
+            <span class="badge badge-old">需深度研究</span>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:750px;margin:0 auto;">
+        <div class="summary-box">
+          <h3> 那……我该选哪个？</h3>
+          <p>如果你刚接触美股，我们的建议是：<strong>先从指数定投开始</strong>。拿出每月固定金额，定投标普500 ETF。这个过程就像"自动驾驶"，不需要你看盘、不需要你选股、不需要你判断时机。等你对市场有了更深入的理解，再考虑是否尝试其他策略。巴菲特的建议是：<strong>"对于大多数人来说，最好的投资方式是持续买入低费率的标普500指数基金，然后别再碰它。"</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 美股交易必知 ===== -->
+  <section class="section" style="padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title"> 美股交易必知</h2>
+      <p class="section-intro">开始交易前，先搞懂这些美股特有的规则和常识，<strong>避免踩坑</strong></p>
+      <div class="key-points" style="max-width:860px;margin:0 auto 20px;">
+        <div class="key-point">
+          <strong> 交易时间</strong><br>
+          美股常规交易时间为美东时间周一至周五 9:30-16:00。对中国投资者来说，夏令时对应北京时间 <strong>21:30-次日4:00</strong>，冬令时延后1小时（22:30-次日5:00）。盘前交易 4:00-9:30，盘后交易 16:00-20:00，但流动性较低。
+        </div>
+        <div class="key-point">
+          <strong> 最小交易单位</strong><br>
+          美股支持<strong>零股交易</strong>，最低可买 0.0001 股（部分券商 $1 起投）。意味着你不需要攒够一股的价格——$10 也能买亚马逊的一部分。这让小额资金也能参与到高价股的投资中。
+        </div>
+        <div class="key-point">
+          <strong> 股票代码</strong><br>
+          美股代码叫 <strong>Ticker Symbol</strong>，通常是 1-5 个字母。知名代码如 AAPL（苹果）、MSFT（微软）、TSLA（特斯拉）。代码前加 $ 表示价格（如 $150.50），下跌用红色、上涨用绿色表示（与中国A股相反）。
+        </div>
+        <div class="key-point">
+          <strong> T+1 结算制度</strong><br>
+          自2024年5月起，美股交易实行 <strong>T+1结算</strong>（交易日次日完成资金和股票交割）。卖出股票后的资金次日才真正到账，这对频繁交易者需要留意。此前美股使用T+2结算长达数十年。
+        </div>
+        <div class="key-point">
+          <strong> 股息与税务</strong><br>
+          美国公司常按季度<strong>派发股息</strong>，现金直接打入账户。但非美国居民需缴纳 <strong>30% 股息预扣税</strong>（根据中美税务协定税率）。资本利得（买卖差价）美国不扣税，但需自行申报本国税务。
+        </div>
+        <div class="key-point">
+          <strong> PDT规则</strong><br>
+          <strong>Pattern Day Trader（日内交易者规则）</strong>：如果你的账户市值低于 $25,000，则每5个交易日内最多只能做 <strong>3次日内交易</strong>（当天买入当天卖出算1次）。超过3次账户会被限制交易。这是新手最常踩的坑。
+        </div>
+      </div>
+      <div class="deep-box" style="max-width:860px;margin:0 auto;">
+        <strong> 小白提醒</strong>
+        <p>美股不设涨跌停板限制，单日涨跌可能很大。同时，美股财报季（每季度末后几周）个股波动尤其剧烈。了解这些基本规则后，再去"投资小学堂"用虚拟资金练手，无风险积累实战经验。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 常见误区澄清 ===== -->
+  <section class="section section-alt" style="padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title"> 美股小白常见误区</h2>
+      <p class="section-intro">这些"我原来以为"的误区，你可能也中过其中几条。点击卡片翻转查看真相。</p>
+      <div class="myth-buster-grid">
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                买股价低的股票更划算
+                <span class="myth-tag">常见误区 #1</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>股价高低不等于贵贱</strong><br>$5的股票可以是极度高估，$500的股票可以非常便宜。关键看市盈率、企业价值和增长前景。
+              </div>
+            </div>
+          </div>
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                开户美股需要有美国身份
+                <span class="myth-tag">常见误区 #3</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>完全不需要</strong><br>中国大陆居民持身份证和护照就可以开立美股账户。富途moomoo、盈透证券等都支持中文开户和银联入金。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                买美股就是投机赌博
+                <span class="myth-tag">常见误区 #2</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>长期投资 投机</strong><br>买入并持有标普500ETF 30年，历史年化约10%——这不是赌博，是分享全球最强企业长期增长的科学方式。
+              </div>
+            </div>
+          </div>
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                需要很多钱才能开始
+                <span class="myth-tag">常见误区 #4</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>$1 就能开始</strong><br>绝大多数美股券商支持零股交易（Fractional Shares）。哪怕只有$10/月，也能买入标普500的一部分，开启投资之路。
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="myth-buster-col">
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                大公司股票风险小
+                <span class="myth-tag">常见误区 #5</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>大公司也会暴跌</strong><br>英特尔、通用电气曾是全球最牛的股票，现在呢？没有哪家公司"大到不能跌"。分散投资才是控制风险的正确姿势。
+              </div>
+            </div>
+          </div>
+          <div class="myth-buster-card" onclick="this.classList.toggle('flipped')">
+            <div class="myth-buster-inner">
+              <div class="myth-front">
+                <span class="myth-icon"></span>
+                等市场跌了再买
+                <span class="myth-tag">常见误区 #6</span>
+              </div>
+              <div class="myth-back">
+                <span class="myth-icon"></span>
+                <strong>择时是投资中最难的事</strong><br>没人能精准预测市场底部。定投策略恰好解决了这个问题：不问时机，按时买入，用时间平滑波动。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 美股实时新闻 ===== -->
+  <section class="section section-alt" style="padding:60px 0;">
+    <div class="container">
+      <h2 class="section-title">📰 美股实时新闻</h2>
+      <p class="section-intro">来自 Bloomberg、CNBC、Reuters、WSJ 等权威财经媒体——每日自动更新</p>
+
+      <!-- 加载状态 -->
+      <div id="newsLoading" style="text-align:center;padding:40px;">
+        <div class="news-spinner"></div>
+        <p style="color:var(--text-muted);margin-top:16px;font-size:0.9rem;">正在获取最新美股新闻...</p>
+      </div>
+
+      <!-- 新闻列表 -->
+      <div class="news-grid" id="newsGrid" style="display:none;"></div>
+
+      <!-- API 错误回退：显示原有 facts -->
+      <div id="newsFallback" style="display:none;">
+        <div class="fact-rotator" id="factRotator">
+          <div class="fact-card active" data-fact="0">
+            <span class="fact-icon">📊</span>
+            <div class="fact-text">
+              <h4>标普500近70年平均年化回报约10%</h4>
+              <p>含股息再投资。这意味着约每<strong>7年翻一倍</strong>。$10,000在30年后变成约$174,000——这就是复利的力量。</p>
+            </div>
+          </div>
+          <div class="fact-card" data-fact="1">
+            <span class="fact-icon">🏛️</span>
+            <div class="fact-text">
+              <h4>道琼斯指数130年前只有12只股票</h4>
+              <p>1896年查尔斯·道创立时，最初12家公司全是工业股，如今已扩展到30家。唯一始终在指数中的公司？答案是没有。</p>
+            </div>
+          </div>
+          <div class="fact-card" data-fact="2">
+            <span class="fact-icon">💻</span>
+            <div class="fact-text">
+              <h4>纳斯达克7大科技巨头占指数权重超40%</h4>
+              <p>苹果、微软、英伟达、亚马逊、谷歌、Meta、特斯拉——这7家公司的市值加起来比整个欧洲股市还大。</p>
+            </div>
+          </div>
+        </div>
+        <div class="fact-dots" id="factDots">
+          <span class="fact-dot active" data-dot="0"></span>
+          <span class="fact-dot" data-dot="1"></span>
+          <span class="fact-dot" data-dot="2"></span>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:12px;font-size:0.75rem;color:var(--text-muted);" id="newsUpdateTime"></p>
+    </div>
+  </section>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>本网站仅供教育目的，不构成任何投资建议。数据仅供参考。</p>
+      <p>投资有风险，入市需谨慎。Past performance does not guarantee future results.</p>
+      <p class="footer-copy">&copy; 2026 US Stock Guide for Beginners ｜ <a href="about.html" style="color:var(--text-muted)">关于我们</a> ｜ <a href="privacy.html" style="color:var(--text-muted)">隐私政策</a> ｜ <a href="terms.html" style="color:var(--text-muted)">服务条款</a></p>
+    </div>
+  </footer>
+
+  <!-- ==================== 新手入门选择弹窗 ==================== -->
+  <div class="modal-overlay" id="modalBeginner" style="display:none;">
+    <div class="modal-container">
+      <button class="modal-close" id="btnCloseModal">✕</button>
+      <h2 class="modal-title">📚 请选择你的投资水平</h2>
+      <p class="modal-desc">我们会根据你的情况为你推荐最合适的学习内容</p>
+      <div class="modal-options">
+        <div class="modal-option-card" data-option="beginner">
+          <div class="modal-option-icon">🌱</div>
+          <h3>我是完全投资小白</h3>
+          <p>从零开始入门，学习最基础的股票知识</p>
+          <span class="modal-option-badge">推荐</span>
+        </div>
+        <div class="modal-option-card" data-option="experienced">
+          <div class="modal-option-icon">📖</div>
+          <h3>我不是完全小白</h3>
+          <p>已有一定基础，直接进入新手教程</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="cookie-banner.js"></script>
+</body>
+</html>

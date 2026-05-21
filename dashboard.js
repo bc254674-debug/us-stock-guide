@@ -579,8 +579,8 @@ function init() {
   // 返回按钮：从首页进入则回到对应卡片位置，否则回到上一页
   const backBtn = document.getElementById('backBtn');
   if (backBtn) {
-    if (document.referrer && document.referrer.includes('index.html')) {
-      backBtn.href = 'index.html#ticker-' + currentIndex;
+    if (document.referrer && document.referrer.includes('home.html')) {
+      backBtn.href = 'home.html#ticker-' + currentIndex;
     } else if (document.referrer && !document.referrer.includes('dashboard.html')) {
       backBtn.href = document.referrer;
     }
